@@ -1,7 +1,6 @@
-import wikipedia
 import requests
+from bs4 import BeautifulSoup
 
-section = wikipedia.WikipediaPage('Comparison of orbital rocket engines').section('Current, Upcoming, and In-Development rocket engines')
-
-section = section.replace('\n', '').replace("\'", "")
-print(section)
+html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
+b = BeautifulSoup(html.text, 'lxml')
+print(b)
