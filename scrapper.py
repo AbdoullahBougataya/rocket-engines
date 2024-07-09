@@ -6,4 +6,4 @@ soup = BeautifulSoup(html.text, 'html.parser')
 table = soup.find_all('table')[0]
 rows = table.find_all('tr')
 for row in range(len(rows) - 1):
-    print(rows[row + 1])
+    print(rows[row + 1].get_text())
