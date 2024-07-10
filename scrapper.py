@@ -16,7 +16,6 @@ for i in range(len(rows_bs)):
     dictionary = {}
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
-        print(string_element.find('with fuel'))
         if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
             titles[j] = 'Mass with fuel (kg)'
         else:
@@ -65,7 +64,6 @@ for i in range(len(rows_bs)):
     dictionary = {}
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
-        print(string_element.find('with fuel'))
         if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
             titles[j] = 'Mass with fuel (kg)'
         else:
@@ -104,3 +102,4 @@ for i in range(len(rows_bs)):
     dictionary["Status"] = "Retired"
     if dictionary != {}:
         dict.append(dictionary)
+print(dict)
