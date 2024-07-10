@@ -104,7 +104,7 @@ def Wikipedia():
         if dictionary != {}:
             dict.append(dictionary)
     engines = {}
-    for i in range(len(dict)):
+    for i in range(len(dict) - 1):
         engines[dict[i]["Engine"]] = dict[i]
     return engines
 
