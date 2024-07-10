@@ -17,16 +17,16 @@ for i in range(len(rows_bs)):
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
         if titles[j] == 'Specific impulse (s)':
-            titles[j] = 'Specific impulse (s) Vac'
-            dictionary['Specific impulse (s) SL'] = ''
+            titles[j] = 'Specific impulse Vac (s)'
+            dictionary['Specific impulse SL (s)'] = ''
         if titles[j] == 'Thrust (N)':
             titles[j] = 'Thrust (N) Vac'
             dictionary['Thrust (N) SL'] = ''
-        if titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+        if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             if string_element.find('–') != -1:
-                dictionary['Specific impulse (s) Vac'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
+                dictionary['Specific impulse Vac (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
             else:
-                dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+                dictionary['Specific impulse Vac (s)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             if string_element.find('–') != -1:
                 dictionary['Thrust (N) SL'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
             else:
@@ -61,16 +61,16 @@ for i in range(len(rows_bs)):
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
         if titles[j] == 'Specific impulse (s)':
-            titles[j] = 'Specific impulse (s) Vac'
-            dictionary['Specific impulse (s) SL'] = ''
+            titles[j] = 'Specific impulse Vac (s)'
+            dictionary['Specific impulse SL (s)'] = ''
         if titles[j] == 'Thrust (N)':
             titles[j] = 'Thrust (N) Vac'
             dictionary['Thrust (N) SL'] = ''
-        if titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+        if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             if string_element.find('–') != -1:
-                dictionary['Specific impulse (s) Vac'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
+                dictionary['Specific impulse Vac (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
             else:
-                dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+                dictionary['Specific impulse Vac (s)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             if string_element.find('–') != -1:
                 dictionary['Thrust (N) SL'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
             else:
