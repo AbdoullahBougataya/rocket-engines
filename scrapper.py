@@ -100,15 +100,14 @@ def Wikipedia():
                     dictionary[titles[j]] = float(string_element.replace("(SL)", "").replace("with fuel", ""))
             else:
                 dictionary[titles[j]] = string_element
-        dictionary["Status"] = "Retired"
         if dictionary != {}:
+            dictionary["Status"] = "Retired"
             dict.append(dictionary)
-    # engines = {}
-    # for i in range(len(dict) - 1):
-    #     tmp = dict[i]
-    #     Twomp = tmp['Engine']
-    #     engines[Twomp] = dict[i]
-    return dict
-
+    engines = {}
+    for i in range(len(dict) - 1):
+        tmp = dict[i]
+        Twomp = tmp['Engine']
+        engines[Twomp] = dict[i]
+    return engines
 
 print(Wikipedia())
