@@ -42,7 +42,13 @@ for i in range(len(rows_bs)):
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse (s) Vac'
             dictionary['Specific impulse (s) SL'] = ''
+        if titles[j] == 'Specific impulse (s)':
+            titles[j] = 'Specific impulse (s) Vac'
+            dictionary['Specific impulse (s) SL'] = ''
         if titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+            dictionary['Specific impulse (s) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
+        elif titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Specific impulse (s) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
