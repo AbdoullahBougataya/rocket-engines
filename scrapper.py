@@ -38,7 +38,7 @@ for i in range(len(rows_bs)):
             dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
-    dictionary["status"] = ""
+    dictionary["status"] = "Retired"
     if dictionary != {}:
         dict.append(dictionary)
 print(dict)
