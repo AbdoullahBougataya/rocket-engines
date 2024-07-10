@@ -106,8 +106,9 @@ def Wikipedia():
     engines = {}
     for i in range(len(dict) - 1):
         tmp = dict[i]
+        print(tmp)
         engines[tmp['Engine']] = dict[i]
     return engines
 
 
-print(Wikipedia())
+Wikipedia()
