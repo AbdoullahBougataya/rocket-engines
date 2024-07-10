@@ -38,6 +38,8 @@ for i in range(len(rows_bs)):
         else:
             dictionary[titles[j]] = string_element
     dictionary["Status"] = "Retired"
+    if len(dictionary['Specific impulse (s)'].split()) > 1:
+        
     if dictionary != {}:
         dict.append(dictionary)
 print(dict[11]['Specific impulse (s)'])
