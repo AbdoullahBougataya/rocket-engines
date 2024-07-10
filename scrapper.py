@@ -106,4 +106,4 @@ def Wikipedia():
     return dict
 
 
-print(Wikipedia())
+print(Wikipedia()[11])
