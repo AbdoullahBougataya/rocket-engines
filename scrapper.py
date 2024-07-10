@@ -15,7 +15,7 @@ for i in range(len(rows_bs)):
     element = rows_bs[i].find_all('td')
     dictionary = {}
     for j in range(len(element)):
-        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").removesuffix("\n")
+        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace(">", "").replace("<", "").removesuffix("\n")
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse (s) Vac'
             dictionary['Specific impulse (s) SL'] = ''
@@ -25,7 +25,7 @@ for i in range(len(rows_bs)):
         if titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Specific impulse (s) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
-        elif titles[j] == 'Thrust (N) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").replace(">", "").replace("est.", "").split()) > 1:
+        elif titles[j] == 'Thrust (N) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
@@ -44,7 +44,7 @@ for i in range(len(rows_bs)):
     element = rows_bs[i].find_all('td')
     dictionary = {}
     for j in range(len(element)):
-        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").removesuffix("\n")
+        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace(">", "").replace("<", "").removesuffix("\n")
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse (s) Vac'
             dictionary['Specific impulse (s) SL'] = ''
