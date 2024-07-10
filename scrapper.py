@@ -19,6 +19,8 @@ for i in range(len(rows_bs)):
         print(string_element.find('with fuel'))
         if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
             titles[j] = 'Mass with fuel (kg)'
+        else:
+            titles[j] = 'Mass (kg)'
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse Vac (s)'
             dictionary['Specific impulse SL (s)'] = ''
@@ -66,6 +68,8 @@ for i in range(len(rows_bs)):
         print(string_element.find('with fuel'))
         if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
             titles[j] = 'Mass with fuel (kg)'
+        else:
+            titles[j] = 'Mass (kg)'
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse Vac (s)'
             dictionary['Specific impulse SL (s)'] = ''
