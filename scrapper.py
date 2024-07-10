@@ -33,8 +33,8 @@ for i in range(len(rows_bs)):
     dictionary = {}
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").removesuffix("\n")
-        if titles[j] == 'Specific impulse (s)' and len(dictionary[titles[j]].split()) > 1:
-            dictionary['Specific impulse (s) in Vacuum'] =
+        if titles[j] == 'Specific impulse (s)' and len(string_element.split()) > 1:
+            
         if string_element.replace(".", "").isnumeric():
             dictionary[titles[j]] = float(string_element)
         else:
