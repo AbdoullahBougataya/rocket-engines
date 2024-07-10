@@ -58,12 +58,14 @@ for i in range(len(rows_bs)):
             dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Specific impulse (s) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif titles[j] == 'Thrust (N) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
-            # dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             if string_element.find('–') != -1:
                 dictionary['Thrust (N) Vac'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
             else:
                 dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
-            dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
+            if string_element.find('–') != -1:
+                dictionary['Thrust (N) Vac'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
+            else:
+                dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
             if string_element.find('–') != -1:
                 dictionary[titles[j]] = (float(string_element.split('–')[0]) + float(string_element.split('–')[1])) / 2
