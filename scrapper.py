@@ -29,7 +29,7 @@ for i in range(len(rows_bs)):
             dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
-            
+            if –
             dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
