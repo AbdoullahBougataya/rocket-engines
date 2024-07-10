@@ -103,7 +103,10 @@ def Wikipedia():
         dictionary["Status"] = "Retired"
         if dictionary != {}:
             dict.append(dictionary)
-    return dict
+    engines = {}
+    for i in range(dict):
+        engines[dict[i]['Engine']] = dict[i]
+    return engines
 
 
-print(Wikipedia()[11])
+print(Wikipedia())
