@@ -19,9 +19,15 @@ for i in range(len(rows_bs)):
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse (s) Vac'
             dictionary['Specific impulse (s) SL'] = ''
+        if titles[j] == 'Thrust (N)':
+            titles[j] = 'Thrust (N) Vac'
+            dictionary['Thrust (N) SL'] = ''
         if titles[j] == 'Specific impulse (s) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
             dictionary['Specific impulse (s) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Specific impulse (s) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
+        elif titles[j] == 'Thrust (N) Vac' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+            dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
             dictionary[titles[j]] = float(string_element)
         else:
