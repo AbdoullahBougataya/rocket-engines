@@ -46,4 +46,4 @@ for i in range(len(rows_bs)):
     dictionary["Status"] = "Retired"
     if dictionary != {}:
         dict.append(dictionary)
-print(dict[11])
+print(dict)
