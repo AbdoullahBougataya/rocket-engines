@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-def Wikipedia():
+def Wikipedia(engine_name = ""):
     html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
     soup = BeautifulSoup(html.text, 'html.parser')
     titles_bs = soup.find_all('table')[0].find_all('th')
@@ -108,6 +108,13 @@ def Wikipedia():
         tmp = dict[i]
         Twomp = tmp['Engine']
         engines[Twomp] = dict[i]
-    return engines
+    if engine_name != "":
+        try:
+            return engines[engine_name]
+        except KeyError:
+            print(f'Error: {engine_name} is not a name of an orbital rocket engine.')
+            return f'Error: {engine_name} is not a name of an orbital rocket engine.'
+    else:
+        return engines
 
-print(Wikipedia())
+print(Wikipedia('idk'))
