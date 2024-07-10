@@ -28,7 +28,6 @@ for i in range(len(titles_bs)):
     title = titles_bs[i].get_text()
     titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
 rows_bs = soup.find_all('table')[1].find_all('tr')
-dict = []
 for i in range(len(rows_bs)):
     element = rows_bs[i].find_all('td')
     dictionary = {}
@@ -38,7 +37,7 @@ for i in range(len(rows_bs)):
             dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
-    dictionary["status"] = "Retired"
+    dictionary["Status"] = "Retired\n"
     if dictionary != {}:
         dict.append(dictionary)
 print(dict)
