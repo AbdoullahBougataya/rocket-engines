@@ -15,7 +15,7 @@ for i in range(len(rows_bs)):
     element = rows_bs[i].find_all('td')
     dictionary = {}
     for j in range(len(element)):
-        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "")
+        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").removesuffix("\n")
         if string_element.replace(".", "").isnumeric():
             dictionary[titles[j]] = float(string_element)
         else:
@@ -32,12 +32,12 @@ for i in range(len(rows_bs)):
     element = rows_bs[i].find_all('td')
     dictionary = {}
     for j in range(len(element)):
-        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "")
+        string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").removesuffix("\n")
         if string_element.replace(".", "").isnumeric():
             dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
-    dictionary["Status"] = "Retired\n"
+    dictionary["Status"] = "Retired"
     if dictionary != {}:
         dict.append(dictionary)
 print(dict)
