@@ -30,8 +30,9 @@ for i in range(len(rows_bs)):
             dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
             if string_element.find('–') != -1:
-                dictionary[titles[j]] = float(string_element.split('–'))
-            dictionary[titles[j]] = float(string_element)
+                dictionary[titles[j]] = (float(string_element.split('–')[0]) + float(string_element.split('–')[1])) / 2
+            else:
+                dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
     if dictionary != {}:
@@ -60,7 +61,10 @@ for i in range(len(rows_bs)):
             dictionary['Thrust (N) Vac'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
             dictionary['Thrust (N) SL'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
         elif string_element.replace(".", "").isnumeric():
-            dictionary[titles[j]] = float(string_element)
+            if string_element.find('–') != -1:
+                dictionary[titles[j]] = (float(string_element.split('–')[0]) + float(string_element.split('–')[1])) / 2
+            else:
+                dictionary[titles[j]] = float(string_element)
         else:
             dictionary[titles[j]] = string_element
     dictionary["Status"] = "Retired"
