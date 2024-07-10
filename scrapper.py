@@ -16,6 +16,9 @@ for i in range(len(rows_bs)):
     dictionary = {}
     for j in range(len(element)):
         string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+        if titles[j] == 'Mass (kg':
+            titles[j] = 'Specific impulse Vac (s)'
+            dictionary['Specific impulse SL (s)'] = ''
         if titles[j] == 'Specific impulse (s)':
             titles[j] = 'Specific impulse Vac (s)'
             dictionary['Specific impulse SL (s)'] = ''
