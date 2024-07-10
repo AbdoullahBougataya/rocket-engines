@@ -117,4 +117,4 @@ def Wikipedia(engine_name = ""):
     else:
         return engines
 
-print(Wikipedia('idk'))
+print(Wikipedia('AJ-10-190'))
