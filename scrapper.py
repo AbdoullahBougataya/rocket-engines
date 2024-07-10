@@ -40,4 +40,4 @@ for i in range(len(rows_bs)):
     dictionary["Status"] = "Retired"
     if dictionary != {}:
         dict.append(dictionary)
-print(dict)
+print(dict[11]["Specific Impulse (s)"])
