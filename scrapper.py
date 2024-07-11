@@ -158,6 +158,7 @@ def Wikipedia(engine_name = ""):
     print(" . ", end="")
     time.sleep(1)
     print(" .")
+    time.sleep(1)
     # Handle the function parameter
     if engine_name != "":
         try:
