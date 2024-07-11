@@ -30,14 +30,15 @@ def Wikipedia(engine_name = ""):
                 string_element = string_element.replace('with fuel', '')
             elif titles[j] == 'Mass (kg)' or titles[j] == 'Mass with fuel (kg)':
                 titles[j] = 'Mass (kg)'
-            # Split the Specific impulse column into ISP in the vaccum and ISP in the sea level
+            # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Specific impulse (s)':
                 titles[j] = 'Specific impulse Vac (s)'
                 dictionary['Specific impulse SL (s)'] = ''
-            # Split the thrust column into ISP in the vaccum and ISP in the sea level
+            # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             if titles[j] == 'Thrust (N)':
                 titles[j] = 'Thrust Vac (N)'
                 dictionary['Thrust SL (N)'] = ''
+            # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 if string_element.find('–') != -1:
                     dictionary['Specific impulse Vac (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
@@ -47,6 +48,7 @@ def Wikipedia(engine_name = ""):
                     dictionary['Specific impulse SL (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
                     dictionary['Specific impulse SL (s)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
+            # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 if string_element.find('–') != -1:
                     dictionary['Thrust Vac (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
@@ -56,7 +58,9 @@ def Wikipedia(engine_name = ""):
                     dictionary['Thrust SL (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
                     dictionary['Thrust SL (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
+            # Change numbers from strings to floats
             elif string_element.replace("(SL)", "").strip().replace("–", "").replace("with fuel", "").replace(".", "").isnumeric():
+                
                 if string_element.find('–') != -1:
                     dictionary[titles[j]] = (float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2
                 else:
