@@ -50,6 +50,7 @@ def Wikipedia(engine_name = ""):
                     dictionary['Specific impulse SL (s)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+                # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     dictionary['Thrust Vac (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
                 else:
@@ -66,8 +67,9 @@ def Wikipedia(engine_name = ""):
                 else:
                     dictionary[titles[j]] = float(string_element.replace("(SL)", "").replace("with fuel", ""))
             else:
-                # 
+                # assigning the string element from the table to a value in the dictionary
                 dictionary[titles[j]] = string_element
+        # append the list dict with the dictionary if it is not empty
         if dictionary != {}:
             dict.append(dictionary)
     titles_bs = soup.find_all('table')[1].find_all('th')
