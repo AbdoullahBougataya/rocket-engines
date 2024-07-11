@@ -104,10 +104,8 @@ def Wikipedia(engine_name = ""):
             dictionary["Status"] = "Retired"
             dict.append(dictionary)
     engines = {}
-    for i in range(len(dict) - 1):
-        tmp = dict[i]
-        Twomp = tmp['Engine']
-        engines[Twomp] = dict[i]
+    for i in range(len(dict)):
+        engines[dict[i]['Engine']] = dict[i]
     if engine_name != "":
         try:
             return engines[engine_name]
