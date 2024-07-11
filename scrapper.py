@@ -151,14 +151,6 @@ def Wikipedia(engine_name = ""):
     # Copy the elements of dict to engines
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
-    print("Scrapping:", end="")
-    time.sleep(1)
-    print(" . ", end="")
-    time.sleep(1)
-    print(" . ", end="")
-    time.sleep(1)
-    print(" .")
-    time.sleep(1)
     # Handle the function parameter
     if engine_name != "":
         try:
