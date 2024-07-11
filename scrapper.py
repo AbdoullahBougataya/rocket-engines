@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import time
 
 # Wikipedia() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
 def Wikipedia(engine_name = ""):
@@ -150,11 +151,11 @@ def Wikipedia(engine_name = ""):
     # Copy the elements of dict to engines
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
-    for _ in range(3):
-        print("Scrapping:", end="")
-        print(" . ", end="")
-        print(" . ", end="")
-        print(" . ", end="")
+    print("Scrapping:", end="")
+    time.sleep()
+    print(" . ", end="")
+    print(" . ", end="")
+    print(" . ", end="")
     # Handle the function parameter
     if engine_name != "":
         try:
