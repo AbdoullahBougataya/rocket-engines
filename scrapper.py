@@ -21,6 +21,7 @@ def Wikipedia(engine_name = ""):
                 string_element = string_element.split()[0]
             if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
                 titles[j] = 'Mass with fuel (kg)'
+                string_element = string_element.replace('with fuel', '')
             elif titles[j] == 'Mass (kg)' or titles[j] == 'Mass with fuel (kg)':
                 titles[j] = 'Mass (kg)'
             if titles[j] == 'Specific impulse (s)':
