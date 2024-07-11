@@ -144,8 +144,9 @@ def Wikipedia(engine_name = ""):
         if dictionary != {}:
             dictionary["Status"] = "Retired"
             dict.append(dictionary)
-    # Init
+    # Initialize an engines dictionary
     engines = {}
+    #
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
     if engine_name != "":
