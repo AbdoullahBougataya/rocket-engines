@@ -47,7 +47,7 @@ def Wikipedia(engine_name = ""):
                     dictionary['Thrust SL (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
                     dictionary['Thrust SL (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
-            elif string_element.replace("(SL)", "").replace("with fuel", "").replace(".", "").isnumeric():
+            elif string_element.replace("(SL)", "").replace("–", "").replace("with fuel", "").replace(".", "").isnumeric():
                 if string_element.find('–') != -1:
                     dictionary[titles[j]] = (float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2
                 else:
@@ -97,7 +97,7 @@ def Wikipedia(engine_name = ""):
                     dictionary['Thrust SL (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
                     dictionary['Thrust SL (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
-            elif string_element.replace("(SL)", "").replace("with fuel", "").replace(".", "").isnumeric():
+            elif string_element.replace("(SL)", "").replace("with fuel", "").replace("–", "").replace(".", "").isnumeric():
                 if string_element.find('–') != -1:
                     dictionary[titles[j]] = (float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2
                 else:
