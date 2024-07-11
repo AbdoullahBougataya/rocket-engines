@@ -149,13 +149,13 @@ def Wikipedia(engine_name = ""):
     # Copy the elements of dict to engines
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
-    # Handle the function
+    # Handle the function parameter
     if engine_name != "":
         try:
             return engines[engine_name]
         except KeyError:
             print(f'Error: {engine_name} is not a name of an orbital rocket engine.')
-            return f'Error: {engine_name} is not a name of an orbital rocket engine.'
+            return ''
     else:
         return engines
 
