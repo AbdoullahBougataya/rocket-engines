@@ -67,7 +67,7 @@ def Wikipedia(engine_name = ""):
         dictionary = {}
         for j in range(len(element)):
             string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
-            if string_element.find('Д') != -1: # 11D 15D
+            if string_element.find('Д') != -1 or string_element.find('11D') != -1 or string_element.find('15D') != -1 or string_element.find('8D') != -1:
                 string_element = string_element.split()[0]
             if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
                 titles[j] = 'Mass with fuel (kg)'
