@@ -6,7 +6,7 @@ def Wikipedia(engine_name = ""):
     # get the html from Wikipedia
     html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
     soup = BeautifulSoup(html.text, 'html.parser')
-    # get and format the table titles from html
+    # get and format the first table (contain new rocket engines) titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
     titles = []
     for i in range(len(titles_bs)):
@@ -38,12 +38,14 @@ def Wikipedia(engine_name = ""):
             if titles[j] == 'Thrust (N)':
                 titles[j] = 'Thrust Vac (N)'
                 dictionary['Thrust SL (N)'] = ''
-            # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
+            # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+                # Change the Isp in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     dictionary['Specific impulse Vac (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
                 else:
                     dictionary['Specific impulse Vac (s)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+                # Change the Isp in the surface level intervals to median
                 if string_element.find('–') != -1:
                     dictionary['Specific impulse SL (s)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
@@ -55,6 +57,7 @@ def Wikipedia(engine_name = ""):
                     dictionary['Thrust Vac (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
                 else:
                     dictionary['Thrust Vac (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
+                # Change Thrust in the surface level intervals to median
                 if string_element.find('–') != -1:
                     dictionary['Thrust SL (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
@@ -72,6 +75,7 @@ def Wikipedia(engine_name = ""):
         # append the list dict with the dictionary if it is not empty
         if dictionary != {}:
             dict.append(dictionary)
+    # get and format the second table (contain old rocket engines) titles from html
     titles_bs = soup.find_all('table')[1].find_all('th')
     titles = []
     for i in range(len(titles_bs)):
