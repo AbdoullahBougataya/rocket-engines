@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-# Wikipedia is a function that scrape the elements of the list that contains the informations about rockets 
+# Wikipedia() is a function that scrape the elements of the list that contains the informations about rocket engines
 def Wikipedia(engine_name = ""):
     # get the html from Wikipedia
     html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
