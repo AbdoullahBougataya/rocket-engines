@@ -20,7 +20,9 @@ def Wikipedia(engine_name = ""):
         element = rows_bs[i].find_all('td')
         dictionary = {}
         for j in range(len(element)):
+            # define the string_element as a cell from the table [It will get every element as string even if it's a number]
             string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+            # Clean the titles and the elements from 
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
             if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
