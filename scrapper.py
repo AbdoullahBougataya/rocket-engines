@@ -152,10 +152,12 @@ def Wikipedia(engine_name = ""):
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
     print("Scrapping:", end="")
-    time.sleep()
+    time.sleep(0.5)
     print(" . ", end="")
+    time.sleep(0.5)
     print(" . ", end="")
-    print(" . ", end="")
+    time.sleep(0.5)
+    print(" .")
     # Handle the function parameter
     if engine_name != "":
         try:
