@@ -22,7 +22,7 @@ def Wikipedia(engine_name = ""):
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
             string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
-            # Clean the titles and the elements from unwanted 
+            # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
             if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
@@ -30,9 +30,11 @@ def Wikipedia(engine_name = ""):
                 string_element = string_element.replace('with fuel', '')
             elif titles[j] == 'Mass (kg)' or titles[j] == 'Mass with fuel (kg)':
                 titles[j] = 'Mass (kg)'
+            # Split the Specific impulse column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Specific impulse (s)':
                 titles[j] = 'Specific impulse Vac (s)'
                 dictionary['Specific impulse SL (s)'] = ''
+            # Split the thrust column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Thrust (N)':
                 titles[j] = 'Thrust Vac (N)'
                 dictionary['Thrust SL (N)'] = ''
