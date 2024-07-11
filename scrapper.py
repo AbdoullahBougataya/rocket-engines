@@ -146,9 +146,10 @@ def Wikipedia(engine_name = ""):
             dict.append(dictionary)
     # Initialize an engines dictionary
     engines = {}
-    #
+    # Copy the elements of dict to engines
     for i in range(len(dict)):
         engines[dict[i]['Engine']] = dict[i]
+    # Handle the function
     if engine_name != "":
         try:
             return engines[engine_name]
