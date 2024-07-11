@@ -3,16 +3,20 @@ from bs4 import BeautifulSoup
 import re
 
 def Wikipedia(engine_name = ""):
+    # get the html from Wikipedia
     html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
     soup = BeautifulSoup(html.text, 'html.parser')
+    # get and format the table titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
     titles = []
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
         titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
+    # get the table rows
     rows_bs = soup.find_all('table')[0].find_all('tr')
     dict = []
     for i in range(len(rows_bs)):
+        # find all the elements from every row
         element = rows_bs[i].find_all('td')
         dictionary = {}
         for j in range(len(element)):
