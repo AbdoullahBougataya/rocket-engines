@@ -160,7 +160,8 @@ table = """ CREATE TABLE ENGINES (
             Use TEXT,
             Propellant TEXT,
             'Power cycle' TEXT,
-            'Specific'
+            'Specific impulse (s)' TEXT,
+            'Thrust ()'
         ); """
 
 cur.execute(table)
