@@ -154,7 +154,9 @@ engines, titles, datatypes = scrapper()
 table = """ CREATE TABLE ENGINES (
             Engine TEXT,
             Origin TEXT,
-            Designer
+            Designer TEXT,
+            Vehicle TEXT,
+            Status 
         ); """
 
 cur.execute(table)
