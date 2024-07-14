@@ -26,11 +26,6 @@ def Wikipedia():
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
-            if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
-                titles[j] = 'Mass with fuel (kg)'
-                string_element = string_element.replace('with fuel', '')
-            elif titles[j] == 'Mass (kg)' or titles[j] == 'Mass with fuel (kg)':
-                titles[j] = 'Mass (kg)'
             # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Specific impulse (s)':
                 titles[j] = 'Specific impulse Vac (s)'
@@ -94,11 +89,6 @@ def Wikipedia():
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
-            if titles[j] == 'Mass (kg)' and string_element.find('with fuel') != -1:
-                titles[j] = 'Mass with fuel (kg)'
-                string_element = string_element.replace('with fuel', '')
-            elif titles[j] == 'Mass (kg)' or titles[j] == 'Mass with fuel (kg)':
-                titles[j] = 'Mass (kg)'
             # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
             if titles[j] == 'Specific impulse (s)':
                 titles[j] = 'Specific impulse Vac (s)'
