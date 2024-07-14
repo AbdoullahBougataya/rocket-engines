@@ -1,4 +1,5 @@
 import sqlite3
+import scrapper
 
 con = sqlite3.connect('db\database.db')
 

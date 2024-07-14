@@ -139,4 +139,4 @@ def scrapper():
     # Handle the function parameter
     return dict
 
-sys.modules[__name__] = foo
+sys.modules[__name__] = scrapper
