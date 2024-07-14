@@ -148,6 +148,8 @@ cur = con.cursor()
 # Drop the GEEK table if already exists.
 cur.execute("DROP TABLE IF EXISTS ENGINES")
 
+engines, titles, datatypes = scrapper()
+
 # Creating table
 table = """ CREATE TABLE ENGINES """
 
