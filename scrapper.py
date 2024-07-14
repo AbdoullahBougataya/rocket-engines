@@ -157,7 +157,7 @@ table = """ CREATE TABLE ENGINES (
         ); """
 
 cur.execute(table)
-
+print(cur.execute("""SELECT * FROM ENGINES"""))
 print("Table is Ready")
 
 # Close the connection
