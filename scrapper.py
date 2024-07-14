@@ -11,7 +11,6 @@ def scrapper():
     # get and format the first table (contain new rocket engines) titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
     titles = []
-    datatypes = ['TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'REAL', 'REAL', 'REAL', 'TEXT', 'REAL', 'REAL']
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
         titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
@@ -138,7 +137,7 @@ def scrapper():
             dictionary["Status"] = "Retired"
             dict.append(dictionary)
     # Handle the function parameter
-    return dict, titles, datatypes
+    return dict
 
 con = sqlite3.connect('db\database.db')
 
@@ -152,11 +151,11 @@ engines, titles, datatypes = scrapper()
 
 # Creating table
 table = """ CREATE TABLE ENGINES (
-            Engine TEXT,
-            Origin TEXT,
+            Engine TEXT NOT NULL,
+            Origin TEXT NOT NULL,
             Designer TEXT,
             Vehicle TEXT,
-            Status TEXT,
+            Status TEXT NOT NULL,
             Use TEXT,
             Propellant TEXT,
             'Power cycle' TEXT,
@@ -165,7 +164,7 @@ table = """ CREATE TABLE ENGINES (
             'Chamber pressure (bar)' REAL,
             'Mass (kg)' TEXT,
             'Thrust weight ratio' REAL,
-            'Oxidiser:fuel ratio'
+            'Oxidiser:fuel ratio' REAL
         ); """
 
 cur.execute(table)
