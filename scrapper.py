@@ -169,7 +169,7 @@ table = """ CREATE TABLE ENGINES (
 
 cur.execute(table)
 for i in range(len(engines)):
-    
+    cur.execute("INSERT INTO AAPL1M2021 (Engine,open,high,low,close,volume) VALUES (:t, :o, :h, :l, :c, :v)", engines)
 print("Table is Ready")
 
 # Close the connection
