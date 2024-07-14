@@ -146,6 +146,6 @@ def Wikipedia():
             dictionary["Status"] = "Retired"
             dict.append(dictionary)
     # Handle the function parameter
-    return dict
+    return dict, titles
 
 print(Wikipedia())
