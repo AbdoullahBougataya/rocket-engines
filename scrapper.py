@@ -158,7 +158,8 @@ table = """ CREATE TABLE ENGINES (
             Vehicle TEXT,
             Status TEXT,
             Use TEXT,
-            
+            Propellant TEXT,
+            Power cycle'
         ); """
 
 cur.execute(table)
