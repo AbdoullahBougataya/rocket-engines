@@ -152,7 +152,9 @@ engines, titles, datatypes = scrapper()
 
 # Creating table
 table = """ CREATE TABLE ENGINES (
-            id INT NOT NULL
+            Engine TEXT,
+            Origin TEXT,
+            Designer
         ); """
 
 cur.execute(table)
