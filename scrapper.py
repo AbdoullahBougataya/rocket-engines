@@ -140,25 +140,25 @@ def scrapper():
     # Handle the function parameter
     return dict, titles, datatypes
 
-try:
-	# Making a connection between sqlite3 database and Python Program
-	con = sqlite3.connect('db\database.db')
-	# If sqlite3 makes a connection with python program then it will print "Connected to SQLite"
-	# Otherwise it will show errors
-	print("Connected to SQLite")
-except sqlite3.Error as error:
-	print("Failed to connect with the sqlite3 database", error)
-finally:
-	# Inside Finally Block, If connection is open
-	if con:
-		cur = con.cursor()
-        cur.execute("DROP TABLE IF EXISTS engines;")
-		cur.execute("CREATE TABLE engines (id INT)")
-		engines, titles, datatype = scrapper()
-		for i in titles:
-		    cur.execute(f"ALTER TABLE engines ADD '{i}' {datatype}")
-		cur.execute("SELECT * FROM engines")
-		# using close() method, we will close the connection
-		con.close()
-		# After closing connection object, we will print "the sqlite connection is closed"
-		print("the sqlite connection is closed")
+con = sqlite3.connect('db\database.db')
+
+# cursor object
+cur = con.cursor()
+
+# Drop the GEEK table if already exists.
+cur.execute("DROP TABLE IF EXISTS ENGINES")
+
+# Creating table
+table = """ CREATE TABLE ENGINES (
+            Email VARCHAR(255) NOT NULL,
+            First_Name CHAR(25) NOT NULL,
+            Last_Name CHAR(25),
+            Score INT
+        ); """
+
+cur.execute(table)
+
+print("Table is Ready")
+
+# Close the connection
+con.close()
