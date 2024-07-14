@@ -15,7 +15,7 @@ finally:
 		cur = con.cursor()
 		cur.execute("CREATE TABLE engines")
 		engines, titles, datatype = Wikipedia()
-		cur.execute("CREATE TABLE engines ()")
+		cur.execute("CREATE TABLE engines (id INT)")
 		for i in titles:
 		    cur.execute(f"ALTER TABLE engines ADD '{i}' {datatype}")
 		cur.execute("SELECT * FROM engines")
