@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import sqlite3
+import sys
 
 # scrapper() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
 def scrapper():
@@ -139,37 +139,4 @@ def scrapper():
     # Handle the function parameter
     return dict
 
-con = sqlite3.connect('db\database.db')
-
-# cursor object
-cur = con.cursor()
-
-# Drop the GEEK table if already exists.
-cur.execute("DROP TABLE IF EXISTS ENGINES")
-
-engines = scrapper()
-
-# Creating table
-table = """ CREATE TABLE ENGINES (
-            Engine TEXT NOT NULL,
-            Origin TEXT NOT NULL,
-            Designer TEXT,
-            Vehicle TEXT,
-            Status TEXT NOT NULL,
-            Use TEXT,
-            Propellant TEXT,
-            'Power cycle' TEXT,
-            'Specific impulse (s)' REAL,
-            'Thrust (N)' REAL,
-            'Chamber pressure (bar)' REAL,
-            'Mass (kg)' TEXT,
-            'Thrust weight ratio' REAL,
-            'Oxidiser:fuel ratio' REAL
-        ); """
-
-cur.execute(table)
-
-print("Table is Ready")
-
-# Close the connection
-con.close()
+sys.modules[__name__] = foo
