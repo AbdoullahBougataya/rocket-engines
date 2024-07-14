@@ -159,7 +159,8 @@ table = """ CREATE TABLE ENGINES (
             Status TEXT,
             Use TEXT,
             Propellant TEXT,
-            Power cycle'
+            'Power cycle' TEXT,
+            'Specific'
         ); """
 
 cur.execute(table)
