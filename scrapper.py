@@ -168,6 +168,7 @@ table = """ CREATE TABLE ENGINES (
         ); """
 
 cur.execute(table)
+
 print("Table is Ready")
 
 # Close the connection
