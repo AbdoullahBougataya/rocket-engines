@@ -162,7 +162,10 @@ table = """ CREATE TABLE ENGINES (
             'Power cycle' TEXT,
             'Specific impulse (s)' REAL,
             'Thrust (N)' REAL,
-            
+            'Chamber pressure (bar)' REAL,
+            'Mass (kg)' TEXT,
+            'Thrust weight ratio' REAL,
+            'Oxidiser:fuel ratio'
         ); """
 
 cur.execute(table)
