@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 # Wikipedia() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
-def Wikipedia(engine_name = ""):
+def Wikipedia():
     # get the html from Wikipedia
     html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
     soup = BeautifulSoup(html.text, 'html.parser')
@@ -145,19 +145,7 @@ def Wikipedia(engine_name = ""):
         if dictionary != {}:
             dictionary["Status"] = "Retired"
             dict.append(dictionary)
-    # Initialize an engines dictionary
-    engines = {}
-    # Copy the elements of dict to engines
-    for i in range(len(dict)):
-        engines[dict[i]['Engine']] = dict[i]
     # Handle the function parameter
-    if engine_name != "":
-        try:
-            return engines[engine_name]
-        except KeyError:
-            print(f'Error: {engine_name} is not a name of an orbital rocket engine.')
-            return ''
-    else:
-        return engines
+    return dict
 
-print(Wikipedia(''))
+print(Wikipedia())
