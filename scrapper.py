@@ -151,7 +151,9 @@ cur.execute("DROP TABLE IF EXISTS ENGINES")
 engines, titles, datatypes = scrapper()
 
 # Creating table
-table = """ CREATE TABLE ENGINES """
+table = """ CREATE TABLE ENGINES (
+            id INT NOT NULL
+        ); """
 
 cur.execute(table)
 
