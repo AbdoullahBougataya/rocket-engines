@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import time
 
 # Wikipedia() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
 def Wikipedia(engine_name = ""):
