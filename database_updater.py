@@ -14,10 +14,11 @@ finally:
 	if con:
 		cur = con.cursor()
 		cur.execute("CREATE TABLE engines")
-		engines, titles = Wikipedia()
+		engines, titles, datatype = Wikipedia()
 		cur.execute("CREATE TABLE engines")
 		for i in titles:
-		    cur.execute(f"ALTER TABLE engines ADD '{i}' datatype")
+		    cur.execute(f"ALTER TABLE engines ADD '{i}' {datatype}")
+		cur.execute("CREATE TABLE engines")
 		# using close() method, we will close the connection
 		con.close()
 		# After closing connection object, we will print "the sqlite connection is closed"
