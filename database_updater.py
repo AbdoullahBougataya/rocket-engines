@@ -14,6 +14,7 @@ finally:
 	if con:
 		cur = con.cursor()
 		cur.execute("CREATE TABLE engines")
+		Wikipedia()
 		cur.execute("CREATE TABLE engines")
 		# using close() method, we will close the connection
 		con.close()
