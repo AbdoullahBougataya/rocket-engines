@@ -156,7 +156,9 @@ table = """ CREATE TABLE ENGINES (
             Origin TEXT,
             Designer TEXT,
             Vehicle TEXT,
-            Status 
+            Status TEXT,
+            Use TEXT,
+            
         ); """
 
 cur.execute(table)
