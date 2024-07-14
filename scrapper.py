@@ -140,5 +140,3 @@ def scrapper():
     # Handle the function parameter
     return dict, titles, datatypes
 
-print(scrapper())
-sys.modules[__name__] = scrapper()
