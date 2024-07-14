@@ -14,6 +14,7 @@ finally:
 	if con:
 		cur = con.cursor()
 		cur.execute("CREATE TABLE engines")
+		cur.execute("CREATE TABLE engines")
 		# using close() method, we will close the connection
 		con.close()
 		# After closing connection object, we will print "the sqlite connection is closed"
