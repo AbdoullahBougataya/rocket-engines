@@ -1,5 +1,6 @@
 # Importing Sqlite3 Module
 import sqlite3
+import scrapper
 
 try:
 	# Making a connection between sqlite3 database and Python Program
@@ -14,7 +15,7 @@ finally:
 	if con:
 		cur = con.cursor()
 		cur.execute("CREATE TABLE engines (id INT)")
-		engines, titles, datatype = Wikipedia()
+		engines, titles, datatype = scrapper()
 		for i in titles:
 		    cur.execute(f"ALTER TABLE engines ADD '{i}' {datatype}")
 		cur.execute("SELECT * FROM engines")
