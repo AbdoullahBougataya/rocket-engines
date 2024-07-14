@@ -149,12 +149,7 @@ cur = con.cursor()
 cur.execute("DROP TABLE IF EXISTS ENGINES")
 
 # Creating table
-table = """ CREATE TABLE ENGINES (
-            Email VARCHAR(255) NOT NULL,
-            First_Name CHAR(25) NOT NULL,
-            Last_Name CHAR(25),
-            Score INT
-        ); """
+table = """ CREATE TABLE ENGINES """
 
 cur.execute(table)
 
