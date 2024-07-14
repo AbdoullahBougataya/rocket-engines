@@ -152,7 +152,7 @@ finally:
 	# Inside Finally Block, If connection is open
 	if con:
 		cur = con.cursor()
-        cur.execute("DROP TABLE IF EXISTS engines")
+        cur.execute("DROP TABLE IF EXISTS engines;")
 		cur.execute("CREATE TABLE engines (id INT)")
 		engines, titles, datatype = scrapper()
 		for i in titles:
