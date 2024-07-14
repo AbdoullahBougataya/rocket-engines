@@ -10,8 +10,9 @@ try:
 except sqlite3.Error as error:
 	print("Failed to connect with the sqlite3 database", error)
 finally:
-	# Inside Finally Block, If connection is open, we need to close it
+	# Inside Finally Block, If connection is open
 	if sqliteConnection:
+		
 		# using close() method, we will close the connection
 		sqliteConnection.close()
 		# After closing connection object, we will print "the sqlite connection is closed"
