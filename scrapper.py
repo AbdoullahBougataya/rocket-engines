@@ -132,8 +132,6 @@ def Wikipedia():
             else:
                 # Assigning the string element from the table to a value in the dictionary
                 dictionary[titles[j]] = string_element
-            if i == 0:
-                datatypes.append(type(dictionary[titles[j]]))
         # Append the list dict with the dictionary and add an status of retired if it is not empty
         if dictionary != {}:
             dictionary["Status"] = "Retired"
