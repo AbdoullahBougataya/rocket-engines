@@ -13,9 +13,8 @@ finally:
 	# Inside Finally Block, If connection is open
 	if con:
 		cur = con.cursor()
-		cur.execute("CREATE TABLE engines")
-		engines, titles, datatype = Wikipedia()
 		cur.execute("CREATE TABLE engines (id INT)")
+		engines, titles, datatype = Wikipedia()
 		for i in titles:
 		    cur.execute(f"ALTER TABLE engines ADD '{i}' {datatype}")
 		cur.execute("SELECT * FROM engines")
