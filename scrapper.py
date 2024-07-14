@@ -10,6 +10,7 @@ def Wikipedia():
     # get and format the first table (contain new rocket engines) titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
     titles = []
+    datatypes = []
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
         titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
