@@ -37,6 +37,7 @@ for i in range(len(engines)):
     for element in engines[i]:
         query += f", {engines[i][element]}"
     query += """);"""
+    print(query)
     cur.execute(query)
 
 print("Table is Ready")
