@@ -33,7 +33,7 @@ table = """ CREATE TABLE ENGINES (
 cur.execute(table)
 
 for i in range(len(engines)):
-    query = """INSERT INTO ENGINES ("""
+    query = """INSERT INTO ENGINES (Id, """
 
 
 print("Table is Ready")
