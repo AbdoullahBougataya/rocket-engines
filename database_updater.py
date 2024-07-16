@@ -35,7 +35,7 @@ cur.execute(table)
 for i in range(len(engines)):
     query = f"""INSERT INTO ENGINES (Id, Engine, Origin, Designer, Vehicle, Status, Use, Propellant, 'Power cycle', 'Specific impulse (s)', 'Thrust (N)', 'Chamber pressure (bar)', 'Mass (kg)', 'Thrust weight ratio', 'Oxidiser:fuel ratio') VALUES({i}"""
     for element in engines[i]:
-        query += f""", {engines[i][element]}"""
+        query += f", {engines[i][element]}"
     query += """);"""
     cur.execute(query)
 
