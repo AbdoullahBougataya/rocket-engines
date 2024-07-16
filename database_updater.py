@@ -13,6 +13,7 @@ engines = scrapper()
 
 # Creating table
 table = """ CREATE TABLE ENGINES (
+            Id INTEGER NOT NULL,
             Engine TEXT NOT NULL,
             Origin TEXT NOT NULL,
             Designer TEXT,
