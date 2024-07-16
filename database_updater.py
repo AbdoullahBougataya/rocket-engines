@@ -33,8 +33,8 @@ table = """ CREATE TABLE ENGINES (
 cur.execute(table)
 
 for i in range(len(engines)):
-    query = """INSERT INTO ENGINES (Id, """
-
+    query = f"""INSERT INTO ENGINES (Id, Engine, Origin, Designer, Vehicle, Status, Use, Propellant, 'Power cycle', 'Specific impulse (s)', 'Thrust (N)', 'Chamber pressure (bar)', 'Mass (kg)', 'Thrust weight ratio', 'Oxidiser:fuel ratio') VALUES({i}"""
+    for 
 
 print("Table is Ready")
 
