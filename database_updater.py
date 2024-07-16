@@ -32,6 +32,10 @@ table = """ CREATE TABLE ENGINES (
 
 cur.execute(table)
 
+
+    query = """"""
+
+
 print("Table is Ready")
 
 # Close the connection
