@@ -35,14 +35,6 @@ def scrapper():
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
-            # Split the specific impulse column into ISP in the vaccum and ISP in the sea level
-            if titles[j] == 'Specific impulse (s)':
-                titles[j] = 'Specific impulse Vac (s)'
-                dictionary['Specific impulse SL (s)'] = ''
-            # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            if titles[j] == 'Thrust (N)':
-                titles[j] = 'Thrust Vac (N)'
-                dictionary['Thrust SL (N)'] = ''
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
