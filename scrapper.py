@@ -6,7 +6,8 @@ import sys
 # scrapper() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
 def scrapper():
     # get the html from scrapper
-    html = requests.get('https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines')
+    link
+    html = requests.get()
     soup = BeautifulSoup(html.text, 'html.parser')
     # get and format the first table (contain new rocket engines) titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
