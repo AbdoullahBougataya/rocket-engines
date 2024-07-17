@@ -14,7 +14,14 @@ def scrapper():
     titles = []
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
-        titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
+        if title == 'Specific impulse (s)':
+            titles.append('Specific impulse Vac (s)')
+            titles.append('Specific impulse SL (s)')
+        elif title == 'Thrust (N)':
+            titles.append('Thrust Vac (s)')
+            titles.append('Thrust SL (s)')
+        else:
+            titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
     # get the table rows
     rows_bs = soup.find_all('table')[0].find_all('tr')
     dict = []
