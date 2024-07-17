@@ -59,7 +59,7 @@ def scrapper():
                 if string_element.find('–') != -1:
                     dictionary += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
                 else:
-                    dictionary += tuple(map(str, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
+                    dictionary += tuple(map(float, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
             else:
                 # assigning the string element from the table to a value in the dictionary
                 dictionary += tuple(map(str, [string_element]))
