@@ -64,7 +64,7 @@ def scrapper():
                 # assigning the string element from the table to a value in the dictionary
                 dictionary += tuple(map(str, [string_element]))
         # append the list dict with the dictionary if it is not empty
-        if dictionary != {}:
+        if dictionary != ():
             dict.append(dictionary)
     # get and format the second table (contain old rocket engines) titles from html
     # titles_bs = soup.find_all('table')[1].find_all('th')
