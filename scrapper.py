@@ -66,6 +66,18 @@ def scrapper():
         # append the list dict with the dictionary if it is not empty
         if row != ():
             dict.append(row)
+    titles_bs = soup.find_all('table')[1].find_all('th')
+    titles = ()
+    for i in range(len(titles_bs)):
+        title = re.sub("\[.*?\]","[]",titles_bs[i].get_text().replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", "")
+        if title == 'Specific impulse (s)':
+            titles += tuple(map(str, ['Specific impulse Vac (s)']))
+            titles += tuple(map(str, ['Specific impulse SL (s)']))
+        elif title == 'Thrust (N)':
+            titles += tuple(map(str, ['Thrust Vac (s)']))
+            titles += tuple(map(str, ['Thrust SL (s)']))
+        else:
+            titles += tuple(map(str, [title]))
     # get the table rows
     rows_bs = soup.find_all('table')[1].find_all('tr')
     for i in range(len(rows_bs)):
@@ -79,7 +91,7 @@ def scrapper():
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
-            if titles[j + 1] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2]))
@@ -88,7 +100,7 @@ def scrapper():
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])]))
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j + 1] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2]))
@@ -97,7 +109,7 @@ def scrapper():
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])]))
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
-            elif string_element.replace("(SL)", "").strip().replace("–", "").replace("with fuel", "").replace(".", "").isnumeric() and titles[j + 1] != 'Mass (kg)':
+            elif string_element.replace("(SL)", "").strip().replace("–", "").replace("with fuel", "").replace(".", "").isnumeric() and titles[j] != 'Mass (kg)':
                 # Change intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
