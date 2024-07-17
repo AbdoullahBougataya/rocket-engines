@@ -49,12 +49,9 @@ def scrapper():
                 # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     dictionary['Thrust Vac (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2
-                else:
-                    dictionary['Thrust Vac (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
-                # Change Thrust in the surface level intervals to median
-                if string_element.find('–') != -1:
                     dictionary['Thrust SL (N)'] = (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2
                 else:
+                    dictionary['Thrust Vac (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0])
                     dictionary['Thrust SL (N)'] = float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])
             # Change numbers from strings to floats
             elif string_element.replace("(SL)", "").strip().replace("–", "").replace("with fuel", "").replace(".", "").isnumeric() and titles[j] != 'Mass (kg)':
