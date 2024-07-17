@@ -11,17 +11,17 @@ def scrapper():
     soup = BeautifulSoup(html.text, 'html.parser')
     # get and format the first table (contain new rocket engines) titles from html
     titles_bs = soup.find_all('table')[0].find_all('th')
-    titles = []
+    titles = ()
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
         if re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", "") == 'Specific impulse (s)':
-            titles.append('Specific impulse Vac (s)')
-            titles.append('Specific impulse SL (s)')
+            titles = titles + ('Specific impulse Vac (s)')
+            titles = titles + ('Specific impulse SL (s)')
         elif re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", "") == 'Thrust (N)':
-            titles.append('Thrust Vac (s)')
-            titles.append('Thrust SL (s)')
+            titles = titles + ('Thrust Vac (s)')
+            titles = titles + ('Thrust SL (s)')
         else:
-            titles.append(re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
+            titles = titles + (re.sub("\[.*?\]","[]",title.replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", ""))
     # get the table rows
     rows_bs = soup.find_all('table')[0].find_all('tr')
     dict = []
