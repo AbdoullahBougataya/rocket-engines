@@ -14,10 +14,10 @@ def scrapper():
     titles = []
     for i in range(len(titles_bs)):
         title = titles_bs[i].get_text()
-        if title == 'Specific impulse (s)':
+        if title == 'Specific impulse (s)[a]':
             titles.append('Specific impulse Vac (s)')
             titles.append('Specific impulse SL (s)')
-        elif title == 'Thrust (N)':
+        elif title == 'Thrust (N)[a]':
             titles.append('Thrust Vac (s)')
             titles.append('Thrust SL (s)')
         else:
