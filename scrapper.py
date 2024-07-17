@@ -62,7 +62,7 @@ def scrapper():
                     dictionary[titles[j]] = float(string_element.replace("(SL)", "").replace("with fuel", ""))
             else:
                 # assigning the string element from the table to a value in the dictionary
-                dictionary[titles[j]] = string_element
+                dictionary += tuple(map(str, [string_element]))
         # append the list dict with the dictionary if it is not empty
         if dictionary != {}:
             dict.append(dictionary)
