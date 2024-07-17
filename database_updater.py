@@ -22,8 +22,10 @@ table = """ CREATE TABLE ENGINES (
             Use TEXT,
             Propellant TEXT,
             'Power cycle' TEXT,
-            'Specific impulse (s)' REAL,
-            'Thrust (N)' REAL,
+            'Specific impulse Vac (s)' REAL,
+            'Specific impulse SL (s)' REAL,
+            'Thrust Vac (N)' REAL,
+            'Thrust SL (N)' REAL,
             'Chamber pressure (bar)' REAL,
             'Mass (kg)' TEXT,
             'Thrust weight ratio' REAL,
@@ -33,12 +35,12 @@ table = """ CREATE TABLE ENGINES (
 cur.execute(table)
 
 for i in range(len(engines)):
-    query = f"""INSERT INTO ENGINES (Id, Engine, Origin, Designer, Vehicle, Status, Use, Propellant, 'Power cycle', 'Specific impulse (s)', 'Thrust (N)', 'Chamber pressure (bar)', 'Mass (kg)', 'Thrust weight ratio', 'Oxidiser:fuel ratio') VALUES({i}"""
+    query = f"""INSERT INTO ENGINES (Id, Engine, Origin, Designer, Vehicle, Status, Use, Propellant, 'Power cycle', 'Specific impulse Vac (s)', 'Specific impulse SL (s)', 'Thrust Vac (N)', 'Thrust SL (N)', 'Chamber pressure (bar)', 'Mass (kg)', 'Thrust weight ratio', 'Oxidiser:fuel ratio') VALUES({i}"""
     for element in engines[i]:
-        if (' ' in engines[i][element]) == True:
+        elif engines[i][element] == "":
+            query += f""", NULL"""
+        elif type(engines[i][element]) == str:
             query += f""", '{engines[i][element]}'"""
-        else if engines[i][element] == "":
-            
         else:
             query += f""", {engines[i][element]}"""
     query += """);"""

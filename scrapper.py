@@ -138,4 +138,5 @@ def scrapper():
             dict.append(dictionary)
     # Handle the function parameter
     return dict
+print(scrapper()[1])
 sys.modules[__name__] = scrapper
