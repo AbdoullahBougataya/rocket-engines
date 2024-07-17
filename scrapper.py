@@ -110,7 +110,6 @@ def scrapper():
         if row != ():
             row = list(row)
             row = row.insert(4, 'Retired')
-            row = tuple(i for i in row)
             dict.append(row)
     # Handle the function parameter
     return dict
