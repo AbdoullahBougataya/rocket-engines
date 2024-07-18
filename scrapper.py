@@ -88,7 +88,7 @@ def scrapper():
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j] == 'Specific impulse SL (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            elif titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
@@ -101,7 +101,7 @@ def scrapper():
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
-                if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
+                if titles[j] == 'Power cycle' or titles[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
             else:
                 # assigning the string element from the table to a value in the dictionary
