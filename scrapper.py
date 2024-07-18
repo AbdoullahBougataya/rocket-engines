@@ -121,7 +121,7 @@ def scrapper():
         # append the list dict with the dictionary if it is not empty
         if row != ():
             if row[0] == 'P230':
-                row += tuple('')
+                row += ('', )
             row = list(row)
             row.insert(4, "Retired")
             dict.append(tuple(row))
