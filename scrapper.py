@@ -29,14 +29,14 @@ def scrapper():
         # find all the elements from every row
         element = rows_bs[i].find_all('td')
         row = ()
-        for j in range(len(element) + 2):
+        for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
             string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
             if i == 1:
-                print(titles[j])
+                print(titles[j] + ', ' + string_element)
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
