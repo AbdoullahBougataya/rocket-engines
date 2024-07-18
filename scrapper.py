@@ -123,5 +123,11 @@ def scrapper():
             dict.append(row)
     # Handle the function parameter
     return titles, dict
-print(scrapper())
+
+titles, dict = scrapper()
+if len(titles) == len(dict[1]):
+    print("SAME LENGHT!!!!")
+else:
+    print("CHECK FOR BUGS")
+    
 sys.modules[__name__] = scrapper
