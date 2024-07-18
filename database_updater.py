@@ -25,5 +25,7 @@ cur.execute(table)
 
 print("Table is Ready")
 
+insert = """INSERT INTO """
+
 # Close the connection
 con.close()
