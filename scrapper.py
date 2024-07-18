@@ -129,5 +129,6 @@ if len(titles) == len(dict[1]):
     print("SAME LENGHT!!!!")
 else:
     print("CHECK FOR BUGS")
-    
+    print(titles)
+    print(dict[1])
 sys.modules[__name__] = scrapper
