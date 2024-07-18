@@ -53,8 +53,6 @@ def scrapper():
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
-            elif titles[j] == 'Thrust Vac (N)':
-                row += tuple(map(str, [string_element, string_element]))
             # Change numbers from strings to floats
             elif string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric() and titles[j] != 'Thrust SL (N)':
                 # Change intervals to median
