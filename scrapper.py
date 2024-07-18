@@ -18,8 +18,8 @@ def scrapper():
             titles += tuple(map(str, ['Specific impulse Vac (s)']))
             titles += tuple(map(str, ['Specific impulse SL (s)']))
         elif title == 'Thrust (N)':
-            titles += tuple(map(str, ['Thrust Vac (s)']))
-            titles += tuple(map(str, ['Thrust SL (s)']))
+            titles += tuple(map(str, ['Thrust Vac (N)']))
+            titles += tuple(map(str, ['Thrust SL (N)']))
         else:
             titles += tuple(map(str, [title]))
     # get the table rows
@@ -78,8 +78,8 @@ def scrapper():
     #         titles += tuple(map(str, ['Specific impulse Vac (s)']))
     #         titles += tuple(map(str, ['Specific impulse SL (s)']))
     #     elif title == 'Thrust (N)':
-    #         titles += tuple(map(str, ['Thrust Vac (s)']))
-    #         titles += tuple(map(str, ['Thrust SL (s)']))
+    #         titles += tuple(map(str, ['Thrust Vac (N)']))
+    #         titles += tuple(map(str, ['Thrust SL (N)']))
     #     else:
     #         titles += tuple(map(str, [title]))
     # get the table rows
