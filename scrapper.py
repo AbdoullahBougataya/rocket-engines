@@ -126,5 +126,4 @@ def scrapper():
     # Handle the function parameter
     return titles, dict
 
-print(scrapper())
 sys.modules[__name__] = scrapper
