@@ -9,11 +9,13 @@ cur = con.cursor()
 # Drop the GEEK table if already exists.
 cur.execute("DROP TABLE IF EXISTS ENGINES")
 
-engines = scrapper()
+titles, engines = scrapper()
 
 # Creating table
-table = """ CREATE TABLE ENGINES (
-            Id INTEGER NOT NULL,
+table = """ CREATE TABLE ENGINES (Id INTEGER NOT NULL, """
+for title in titles:
+    table += title + """, """
+    
             Engine TEXT NOT NULL,
             Origin TEXT NOT NULL,
             Designer TEXT,
