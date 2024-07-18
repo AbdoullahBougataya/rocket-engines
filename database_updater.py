@@ -14,7 +14,7 @@ titles, engines = scrapper()
 # Creating table
 table = """ CREATE TABLE ENGINES (Id INTEGER NOT NULL, """
 for i in range(len(titles)):
-    table += titles[i]
+    table += f"""'{titles[i]}'"""
     if type(engines[7][i]) == str:
         table += """ TEXT, """
     elif type(engines[7][i]) == float:
