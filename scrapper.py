@@ -35,8 +35,6 @@ def scrapper():
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
-            if i == 2:
-                print(titles[j])
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
@@ -60,19 +58,13 @@ def scrapper():
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
-                if titles[j] == 'Specific impulse Vac (s)':
-                    row += tuple(map(str, [""]))
-                if titles[j] == 'Specific impulse SL (s)':
+                if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                     row += tuple(map(str, [""]))
             else:
                 # assigning the string element from the table to a value in the dictionary
                 row += tuple(map(str, [string_element]))
-                if titles[j] == 'Specific impulse Vac (s)':
+                if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                     row += tuple(map(str, [""]))
-                if titles[j] == 'Specific impulse SL (s)':
-                    row += tuple(map(str, [""]))
-            if i == 2:
-                print(row)
         # append the list dict with the dictionary if it is not empty
         if row != ():
             dict.append(row)
@@ -135,4 +127,5 @@ def scrapper():
     return titles, dict
 
 titles, dict = scrapper()
+print(dict)
 sys.modules[__name__] = scrapper
