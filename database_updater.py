@@ -13,9 +13,11 @@ titles, engines = scrapper()
 
 # Creating table
 table = """ CREATE TABLE ENGINES (Id INTEGER NOT NULL, """
-for title in titles:
-    table += title + """, """
-    
+for i in range(len(titles)):
+    table += titles[i]
+    if typeof(engines[][]) == str:
+    elif typeof(engines[][]) == float:
+
             Engine TEXT NOT NULL,
             Origin TEXT NOT NULL,
             Designer TEXT,
