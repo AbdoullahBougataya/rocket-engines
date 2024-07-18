@@ -42,10 +42,8 @@ def scrapper():
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
-            # elif titles[j] == 'Specific impulse Vac (s)':
-            #     row += tuple(map(str, [string_element, string_element]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            elif titles[j] == 'Specific impulse SL (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
@@ -99,10 +97,8 @@ def scrapper():
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
-            # elif titles[j] == 'Specific impulse Vac (s)':
-            #     row += tuple(map(str, [string_element, string_element]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
+            elif titles[j] == 'Specific impulse SL (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
