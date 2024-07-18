@@ -7,12 +7,12 @@ con = sqlite3.connect('db\database.db')
 cur = con.cursor()
 
 # Drop the GEEK table if already exists.
-cur.execute("DROP TABLE IF EXISTS ENGINES")
+cur.execute("DROP TABLE IF EXISTS rocket_engines")
 
 titles, engines = scrapper()
 
 # Creating table
-table = """ CREATE TABLE ENGINES (Id INTEGER NOT NULL, """
+table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL, """
 for i in range(len(titles)):
     table += f"""'{titles[i]}'"""
     if type(engines[7][i]) == str:
@@ -26,7 +26,7 @@ cur.execute(table)
 print("Table is Ready")
 
 for i in range(len(engines)):
-    cur.execute(f"""INSERT INTO ENGINES VALUES {(i, ) + engines[i]};""".replace("''", "NULL"))
+    cur.execute(f"""INSERT INTO rocket_engines VALUES {(i, ) + engines[i]};""".replace("''", "NULL"))
 
 print("Table successfully filled")
 # Close the connection
