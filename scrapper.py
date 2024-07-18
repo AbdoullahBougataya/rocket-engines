@@ -62,18 +62,18 @@ def scrapper():
         # append the list dict with the dictionary if it is not empty
         if row != ():
             dict.append(row)
-    titles_bs = soup.find_all('table')[1].find_all('th')
-    titles = ()
-    for i in range(len(titles_bs)):
-        title = re.sub("\[.*?\]","[]",titles_bs[i].get_text().replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", "")
-        if title == 'Specific impulse (s)':
-            titles += tuple(map(str, ['Specific impulse Vac (s)']))
-            titles += tuple(map(str, ['Specific impulse SL (s)']))
-        elif title == 'Thrust (N)':
-            titles += tuple(map(str, ['Thrust Vac (s)']))
-            titles += tuple(map(str, ['Thrust SL (s)']))
-        else:
-            titles += tuple(map(str, [title]))
+    # titles_bs = soup.find_all('table')[1].find_all('th')
+    # titles = ()
+    # for i in range(len(titles_bs)):
+    #     title = re.sub("\[.*?\]","[]",titles_bs[i].get_text().replace("\n", "").replace("\u200b", "").replace("  ", " ")).replace("[]", "")
+    #     if title == 'Specific impulse (s)':
+    #         titles += tuple(map(str, ['Specific impulse Vac (s)']))
+    #         titles += tuple(map(str, ['Specific impulse SL (s)']))
+    #     elif title == 'Thrust (N)':
+    #         titles += tuple(map(str, ['Thrust Vac (s)']))
+    #         titles += tuple(map(str, ['Thrust SL (s)']))
+    #     else:
+    #         titles += tuple(map(str, [title]))
     # get the table rows
     rows_bs = soup.find_all('table')[1].find_all('tr')
     for i in range(len(rows_bs)):
@@ -118,6 +118,6 @@ def scrapper():
         if row != ():
             dict.append(row)
     # Handle the function parameter
-    return dict
+    return titles, dict
 print(scrapper())
 sys.modules[__name__] = scrapper
