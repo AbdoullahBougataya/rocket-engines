@@ -60,9 +60,13 @@ def scrapper():
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
+                if titles[j] == 'Specific impulse Vac (s)':
+                    row += tuple(map(str, [""]))
             else:
                 # assigning the string element from the table to a value in the dictionary
                 row += tuple(map(str, [string_element]))
+                if titles[j] == 'Specific impulse Vac (s)':
+                    row += tuple(map(str, [""]))
             if i == 2:
                 print(row)
         # append the list dict with the dictionary if it is not empty
