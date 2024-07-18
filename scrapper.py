@@ -118,11 +118,11 @@ def scrapper():
             row += tuple(map(str, [string_element]))
             if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                 row += tuple(map(str, [""]))
-    # append the list dict with the dictionary if it is not empty
-    if row != ():
-        dict.append(row)
-    # Hndle the function parameter
-    retrn titles, dict
+        # append the list dict with the dictionary if it is not empty
+        if row != ():
+            dict.append(row)
+    # Handle the function parameter
+    return titles, dict
 
 titles, dict = scrapper()
 print(dict)
