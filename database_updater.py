@@ -22,7 +22,7 @@ for i in range(len(titles)):
 table = table.removesuffix(""", """)
 table += """); """
 cur.execute(table)
-
+print(titles)
 print("Table is Ready")
 
 for i in range(len(engines)):
