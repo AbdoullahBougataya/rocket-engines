@@ -20,11 +20,10 @@ for i in range(len(titles)):
     elif type(engines[7][i]) == float:
         table += """ REAL, """
 table = table.removesuffix(""", """)
-table += """);"""
-print(table)
-# cur.execute(table)
+table += """); """
+cur.execute(table)
 
-# print("Table is Ready")
+print("Table is Ready")
 
 # Close the connection
 con.close()
