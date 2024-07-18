@@ -26,8 +26,8 @@ cur.execute(table)
 print("Table is Ready")
 
 for i in range(len(engines)):
-    print(f"""INSERT INTO ENGINES VALUES {tuple(i) + engines[i]};""".replace("''", "NULL"))
-    cur.execute(f"""INSERT INTO ENGINES VALUES {tuple(i) + engines[i]};""".replace("''", "NULL"))
+    print(f"""INSERT INTO ENGINES VALUES {(i) + engines[i]};""".replace("''", "NULL"))
+    cur.execute(f"""INSERT INTO ENGINES VALUES {(i) + engines[i]};""".replace("''", "NULL"))
 print("Table successfully filled")
 # Close the connection
 con.close()
