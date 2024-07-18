@@ -26,6 +26,7 @@ cur.execute(table)
 print("Table is Ready")
 
 for i in range(len(engines)):
+    cur = con.cursor()
     cur.execute(f"""INSERT INTO rocket_engines VALUES {(i, ) + engines[i]};""".replace("''", "NULL"))
 
 print("Table successfully filled")
