@@ -56,7 +56,7 @@ def scrapper():
             elif titles[j] == 'Thrust Vac (N)':
                 row += tuple(map(str, [string_element, string_element]))
             # Change numbers from strings to floats
-            elif string_element.replace("(SL)", "").strip().replace("–", "").replace("with fuel", "").replace(".", "").isnumeric() and titles[j] != 'Mass (kg)':
+            elif string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric() and titles[j] != 'Thrust SL (N)':
                 # Change intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
