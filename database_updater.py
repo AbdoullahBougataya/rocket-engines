@@ -34,19 +34,6 @@ table = """ CREATE TABLE ENGINES (
 
 cur.execute(table)
 
-for i in range(len(engines)):
-    query = f"""INSERT INTO ENGINES (Id, Engine, Origin, Designer, Vehicle, Status, Use, Propellant, 'Power cycle', 'Specific impulse Vac (s)', 'Specific impulse SL (s)', 'Thrust Vac (N)', 'Thrust SL (N)', 'Chamber pressure (bar)', 'Mass (kg)', 'Thrust weight ratio', 'Oxidiser:fuel ratio') VALUES({i}"""
-    for element in engines[i]:
-        elif engines[i][element] == "":
-            query += f""", NULL"""
-        elif type(engines[i][element]) == str:
-            query += f""", '{engines[i][element]}'"""
-        else:
-            query += f""", {engines[i][element]}"""
-    query += """);"""
-    print(query)
-    cur.execute(query)
-
 print("Table is Ready")
 
 # Close the connection
