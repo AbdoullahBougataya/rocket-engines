@@ -15,9 +15,9 @@ titles, engines = scrapper()
 table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL, """
 for i in range(len(titles)):
     table += f"""'{titles[i]}'"""
-    if type(engines[7][i]) == str:
+    if type(engines[17][i]) == str:
         table += """ TEXT, """
-    elif type(engines[7][i]) == float:
+    elif type(engines[17][i]) == float:
         table += """ REAL, """
 table = table.removesuffix(""", """)
 table += """); """
