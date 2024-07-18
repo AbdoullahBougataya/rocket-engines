@@ -36,12 +36,14 @@ def scrapper():
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
-            if titles[j] == 'Specific impulse Vac (s)':#  and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1
+            if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
+            elif titles[j] == 'Specific impulse Vac (s)':
+                
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             elif titles[j] == 'Thrust Vac (N)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
