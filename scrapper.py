@@ -43,7 +43,7 @@ def scrapper():
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             elif titles[j] == 'Specific impulse Vac (s)' and re.findall(r'\(.*?\)', string_element) == '(Vac)':
-                row += tuple(map(float, [float(string_element.split()[0])]))
+                row += tuple(map(float, [float(string_element.split(" ")[0])]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             elif titles[j] == 'Specific impulse SL (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrust in the vaccum intervals to median
