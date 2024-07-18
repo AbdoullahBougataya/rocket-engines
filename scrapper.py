@@ -120,7 +120,7 @@ def scrapper():
                     row += tuple(map(str, [""]))
         # append the list dict with the dictionary if it is not empty
         if row != ():
-            dict.append(row)
+            dict.append(list(row).insert(4, "Retired"))
     # Handle the function parameter
     return titles, dict
 
