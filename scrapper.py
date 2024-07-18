@@ -78,6 +78,8 @@ def scrapper():
             # Clean the titles and the strings from unwanted elements
             if string_element.find('Д') != -1:
                 string_element = string_element.split()[0]
+            if i == 1:
+                print(titles[j])
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isp in the vaccum intervals to median
@@ -106,6 +108,8 @@ def scrapper():
                 row += tuple(map(str, [string_element]))
                 if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                     row += tuple(map(str, [""]))
+            if i == 1:
+                print(row)
         # append the list dict with the dictionary if it is not empty
         if row != ():
             row = list(row)
@@ -113,5 +117,5 @@ def scrapper():
             dict.append(tuple(row))
     # Handle the function parameter
     return titles, dict
-
+scrapper()
 sys.modules[__name__] = scrapper
