@@ -118,12 +118,12 @@ def scrapper():
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
-            if titlesr[j] == 'Chamber pressure (bar)' and i == :
-                print(string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric())
-            elif string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric() and titlesr[j] != 'Thrust Vac (N)':
+            elif string_element.replace("(SL)", "").strip().replace("–", "").replace("-", "").replace(".", "").isnumeric() and titlesr[j] != 'Thrust Vac (N)':
                 # Change intervals to medians
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('–')[1])) / 2]))
+                elif string_element.find('-') != -1:
+                    row += tuple(map(float, [(float(string_element.replace("(SL)", "").replace("with fuel", "").split('-')[0]) + float(string_element.replace("(SL)", "").replace("with fuel", "").split('-')[1])) / 2]))
                 else:
                     row += tuple(map(float, [float(string_element.replace("(SL)", "").replace("with fuel", ""))]))
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
@@ -144,6 +144,6 @@ def scrapper():
     # The function returns the titles and the data
     return titles, data
 
-scrapper()
+
 
 sys.modules[__name__] = scrapper
