@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import sys
 
-# scrapper() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return a dictionary that contains those elements.
+# scrapper() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return two tuples; the header of the table and the content of the tables.
 def scrapper():
     # get the html from scrapper
     link = 'https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines'
