@@ -95,7 +95,7 @@ def scrapper():
                 string_element = string_element.split()[0]
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titlesr[j] == 'Power cycle' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
-                # Change the Isp in the vaccum intervals to median
+                # Change the Isps intervals to median
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
