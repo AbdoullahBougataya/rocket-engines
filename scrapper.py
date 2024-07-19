@@ -121,6 +121,7 @@ def scrapper():
                 row += tuple(map(str, [string_element]))
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
+
         # append the data with the newly made row if it is not empty
         if row != ():
             if row[0] == 'P230':
@@ -131,4 +132,6 @@ def scrapper():
     # The function returns the titles and the data
     return titles, data
 
-sys.modules[__name__] = scrapper
+
+
+sys.modules[__name__] = scrapper()
