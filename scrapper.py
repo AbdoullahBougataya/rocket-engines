@@ -118,6 +118,8 @@ def scrapper():
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
+            if j == len(element) and i == 115:
+                print(string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric())
             elif string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric() and titlesr[j] != 'Thrust Vac (N)':
                 # Change intervals to medians
                 if string_element.find('–') != -1:
@@ -142,6 +144,6 @@ def scrapper():
     # The function returns the titles and the data
     return titles, data
 
-
+scrapper()
 
 sys.modules[__name__] = scrapper
