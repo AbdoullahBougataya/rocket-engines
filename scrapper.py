@@ -37,6 +37,8 @@ def scrapper():
                 string_element = string_element[0:6]
             if string_element.find('Д') != -1 or string_element.find('8D6') != -1 or string_element.find('11D2') != -1 or string_element.find('11D5') != -1 or string_element.find('15D1') != -1 or string_element.find('15D3') != -1:
                 string_element = string_element.split()[0]
+            if titles[j] == 'Specific impulse Vac (s)' and i == 17:
+                print(re.sub("\(.*?\)","()", string_element).replace("()", ""))
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
             if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()) > 1:
                 # Change the Isps intervals to medians
