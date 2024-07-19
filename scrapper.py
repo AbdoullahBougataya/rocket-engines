@@ -128,7 +128,7 @@ def scrapper():
             row = list(row)
             row.insert(4, "Retired")
             dict.append(tuple(row))
-    # Handle the function parameter
+    # The function returns the titles and the data
     return titles, dict
 
 sys.modules[__name__] = scrapper
