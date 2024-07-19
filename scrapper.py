@@ -117,11 +117,11 @@ def scrapper():
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
             else:
-                # assigning the string element from the table to a value in the dictionary
+                # assigning the string element from the table to a value in the row
                 row += tuple(map(str, [string_element]))
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
-        # append the list dict with the dictionary if it is not empty
+        # append the data with the newly made row if it is not empty
         if row != ():
             if row[0] == 'P230':
                 row += ('', )
