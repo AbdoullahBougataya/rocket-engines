@@ -24,7 +24,7 @@ def scrapper():
             titles += tuple(map(str, [title]))
     # get the table rows
     rows_bs = soup.find_all('table')[0].find_all('tr')
-    dict = []
+    data = []
     for i in range(len(rows_bs)):
         # find all the elements from every row
         element = rows_bs[i].find_all('td')
@@ -68,7 +68,7 @@ def scrapper():
                     row += tuple(map(str, [""]))
         # append the list dict with the dictionary if it is not empty
         if row != ():
-            dict.append(row)
+            data.append(row)
     # get the table rows
     titles_bs = soup.find_all('table')[0].find_all('th')
     titlesr = ()
@@ -127,8 +127,8 @@ def scrapper():
                 row += ('', )
             row = list(row)
             row.insert(4, "Retired")
-            dict.append(tuple(row))
+            data.append(tuple(row))
     # The function returns the titles and the data
-    return titles, dict
+    return titles, data
 
 sys.modules[__name__] = scrapper
