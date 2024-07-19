@@ -92,7 +92,7 @@ def scrapper():
             string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             # Clean the titles and the strings from unwanted elements
             if string_element.endswith('11Д521') or string_element.endswith('8Д420'):
-                
+                string_element = string_element[0:]
             if string_element.find('Д') != -1 or string_element.find('8D6') != -1 or string_element.find('11D2') != -1 or string_element.find('11D5') != -1 or string_element.find('15D1') != -1 or string_element.find('15D3') != -1:
                 string_element = string_element.split()[0]
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
