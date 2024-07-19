@@ -144,6 +144,4 @@ def scrapper():
     # The function returns the titles and the data
     return titles, data
 
-
-
 sys.modules[__name__] = scrapper
