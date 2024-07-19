@@ -118,7 +118,7 @@ def scrapper():
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
-            if titlesr[j] == 'titlesr[j] != 'Thrust Vac (N)'' and i == 115:
+            if titlesr[j] == 'Chamber pressure (bar)' and i == :
                 print(string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric())
             elif string_element.replace("(SL)", "").strip().replace("–", "").replace(".", "").isnumeric() and titlesr[j] != 'Thrust Vac (N)':
                 # Change intervals to medians
