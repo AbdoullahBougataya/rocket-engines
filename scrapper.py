@@ -37,15 +37,13 @@ def scrapper():
                 string_element = string_element[0:6]
             if string_element.find('Д') != -1 or string_element.find('8D6') != -1 or string_element.find('11D2') != -1 or string_element.find('11D5') != -1 or string_element.find('15D1') != -1 or string_element.find('15D3') != -1:
                 string_element = string_element.split()[0]
-            if titles[j] == 'Specific impulse Vac (s)' and i == 17:
-                print(re.sub("\(.*?\)","()", string_element).replace("()", ""))
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
-            if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()) > 1:
+            if titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isps intervals to medians
                 if string_element.find('–') != -1:
-                    row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1].split('–')[1])) / 2]))
+                    row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
-                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1])]))
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             elif titles[j] == 'Specific impulse Vac (s)' and string_element[string_element.find("(")+1:string_element.find(")")] == 'Vac':
                 row += tuple(map(float, [float(string_element.split(" ")[0])]))
                 row += tuple(map(str, ['']))
@@ -100,12 +98,12 @@ def scrapper():
             if string_element.find('Д') != -1 or string_element.find('8D6') != -1 or string_element.find('11D2') != -1 or string_element.find('11D5') != -1 or string_element.find('15D1') != -1 or string_element.find('15D3') != -1:
                 string_element = string_element.split()[0]
             # Split the specific impulse column into Isp in the vaccum and Isp in the sea level
-            if titlesr[j] == 'Power cycle' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()) > 1:
+            if titlesr[j] == 'Power cycle' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change the Isps intervals to median
                 if string_element.find('–') != -1:
-                    row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1].split('–')[1])) / 2]))
+                    row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
-                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace(",", " ").replace("  ", " ").split()[1])]))
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
             elif titlesr[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1:
                 # Change Thrusts intervals to medians
