@@ -45,7 +45,7 @@ def scrapper():
                 elif i == 17:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "")[0:3]), float(re.sub("\(.*?\)","()", string_element).replace("()", "")[2:6])]))
                 elif i == 28:
-                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[0:3]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[2:6])]))
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[0:3]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[3:6])]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             elif titles[j] == 'Specific impulse Vac (s)' and string_element[string_element.find("(")+1:string_element.find(")")] == 'Vac':
