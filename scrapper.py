@@ -41,7 +41,7 @@ def scrapper():
             if (titles[j] == 'Specific impulse Vac (s)' and len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1) or i == 17:
                 # Change the Isps intervals to medians
                 if i == 17:
-                    row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "")[0:3], float(re.sub("\(.*?\)","()", string_element).replace("()", "")[2:6])]))
                 elif string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
                 else:
