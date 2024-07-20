@@ -31,8 +31,10 @@ def scrapper():
         row = ()
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
-            if title[j] == 'Engine' or title[j] == 'Origin' or title[j] == 'Vehicle' or title[j] == 'Use' or title[j] == 'Vehicle':
-            string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+            if titles[j] == 'Engine' or titles[j] == 'Origin' or titles[j] == 'Vehicle' or titles[j] == 'Use' or titles[j] == 'Vehicle':
+                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+            else:
+                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             # Clean the titles and the strings from unwanted elements
             if string_element.endswith('11Д521') or string_element.endswith('8Д420'):
                 string_element = string_element[0:6]
@@ -98,7 +100,10 @@ def scrapper():
         row = ()
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
-            string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+            if titlesr[j] == 'Engine' or titlesr[j] == 'Origin' or titlesr[j] == 'Vehicle' or titlesr[j] == 'Use' or titlesr[j] == 'Vehicle':
+                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+            else:
+                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             # Clean the titles and the strings from unwanted elements
             if string_element.endswith('11Д521') or string_element.endswith('8Д420'):
                 string_element = string_element[0:6]
