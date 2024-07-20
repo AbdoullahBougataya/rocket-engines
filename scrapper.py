@@ -31,7 +31,7 @@ def scrapper():
         row = ()
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
-            if titles[j] == 'Engine' or titles[j] == 'Origin' or titles[j] == 'Vehicle' or titles[j] == 'Use' or titles[j] == 'Vehicle':
+            if titles[j] == 'Engine' or titles[j] == 'Origin' or titles[j] == 'Vehicle' or titles[j] == 'Use':
                 string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             else:
                 string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
@@ -100,7 +100,7 @@ def scrapper():
         row = ()
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
-            if titlesr[j] == 'Engine' or titlesr[j] == 'Origin' or titlesr[j] == 'Vehicle' or titlesr[j] == 'Use' or titlesr[j] == 'Vehicle':
+            if titlesr[j] == 'Engine' or titlesr[j] == 'Origin' or titlesr[j] == 'Vehicle' or titlesr[j] == 'Status':
                 string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             else:
                 string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
