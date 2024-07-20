@@ -101,7 +101,7 @@ def scrapper():
         for j in range(len(element)):
             # define the string_element as a cell from the table [It will get every element as string even if it's a number]
             if titlesr[j] == 'Origin' or titlesr[j] == 'Vehicle' or titlesr[j] == 'Status':
-                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
+                string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").replace("\n", " ").removesuffix("\n")
             else:
                 string_element = re.sub("\[.*?\]","[]", element[j].get_text().replace("\u200b", "").replace("\u2009", "").replace("\xa0", "").replace("  ", " ")).replace("[]", "").replace(",", "").replace("est.", "").replace("~", "").replace(">", "").replace("<", "").removesuffix("\n")
             # Clean the titles and the strings from unwanted elements
