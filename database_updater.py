@@ -27,10 +27,12 @@ titles, engines = scrapper()
 
 for i in range(len(engines)):
     cur = con.cursor()
-    cur.execute("SELECT Engine FROM rocket_engines WHERE Engine = ?".replace("''", "NULL"), (i, ) + engines[i])
-    cur.execute("INSERT INTO rocket_engines VALUES ?;".replace("''", "NULL"), (i, ) + engines[i])
+    cur.execute("SELECT Engine FROM rocket_engines WHERE Engine = ?", (engines[0],))
+    data = cur.fetchall()
+    if len(data)==0:
+        cur.execute("INSERT INTO rocket_engines VALUES ?;".replace("''", "NULL"), (i, ) + engines[i])
     con.commit()
 
-print("Table successfully filled")
+print("Table successfully updated")
 # Close the connection
 con.close()
