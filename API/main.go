@@ -16,7 +16,7 @@ func main()
         fmt.Println("Error opening database:", err)
         return
     }
-    defer db.Close()
+    defer database.Close()
 
 	rows, err := database.Query("SELECT Id, Engine FROM rocket_engines")
     if err != nil {
