@@ -27,6 +27,7 @@ titles, engines = scrapper()
 
 for i in range(len(engines)):
     cur = con.cursor()
+    cur.execute("SELECT rowid FROM components WHERE name = ?", (name,))
     cur.execute("INSERT INTO rocket_engines VALUES ?;".replace("''", "NULL"), (i, ) + engines[i])
     con.commit()
 
