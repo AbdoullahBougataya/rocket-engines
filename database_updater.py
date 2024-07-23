@@ -12,7 +12,7 @@ cur.execute("DROP TABLE IF EXISTS rocket_engines")
 titles, engines = scrapper()
 
 # Creating table
-table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL, """
+table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL PRIMARY KEY, """
 for i in range(len(titles)):
     table += f"""'{titles[i]}'"""
     if type(engines[17][i]) == str:
