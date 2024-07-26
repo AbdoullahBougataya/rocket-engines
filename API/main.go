@@ -114,5 +114,5 @@ func main() {
     }
 
     // Print The GO map
-    fmt.Println(string(jsonData))
+    fmt.Println(result)
 }
