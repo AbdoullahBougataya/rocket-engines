@@ -46,8 +46,9 @@ func main() {
 
     for rows.Next() {
         var engine Engine
-        var vacsl Vacsl
-        err := rows.Scan(&engine.ID, &engine.Name, &record.Email)
+        var isp    Vacsl
+        var thrust Vacsl
+        err := rows.Scan(&engine.Id, &engine.Engine, &engine.Designer, &engine.Origin, &engine.)
         if err != nil {
             log.Fatal(err)
         }
