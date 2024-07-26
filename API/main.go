@@ -98,4 +98,13 @@ func main() {
     if err = rows.Err(); err != nil {
         log.Fatal(err)
     }
+
+    // Convert records to JSON
+    jsonData, err := json.Marshal(engines)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // Print JSON data
+    fmt.Println(string(jsonData))
 }
