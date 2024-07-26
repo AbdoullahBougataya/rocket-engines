@@ -6,7 +6,45 @@ import (
     "fmt"
     _ "github.com/mattn/go-sqlite3"
     "log"
+    "reflect"
 )
+
+// Custom NullValue type
+type NullValue struct {
+    StringValue string
+    FloatValue  float64
+    IsString    bool
+    Valid       bool
+}
+
+// Implement the Scanner interface
+func (nv *NullValue) Scan(value interface{}) error {
+    if value == nil {
+        nv.StringValue, nv.FloatValue, nv.Valid = "", 0.0, false
+    } else {
+        switch v := value.(type) {
+        case string:
+            nv.StringValue, nv.IsString, nv.Valid = v, true, true
+        case float64:
+            nv.FloatValue, nv.IsString, nv.Valid = v, false, true
+        default:
+            return fmt.Errorf("unsupported type: %v", reflect.TypeOf(value))
+        }
+    }
+    return nil
+}
+
+// Implement the Marshaler interface
+func (nv NullValue) MarshalJSON() ([]byte, error) {
+    if nv.Valid {
+        if nv.IsString {
+            return json.Marshal(nv.StringValue)
+        }
+        return json.Marshal(nv.FloatValue)
+    }
+    return json.Marshal("")
+}
+
 type Vacsl struct {
     Vac   float64    `json:"vaccum"`
     SL    float64    `json:"surface_level"`
