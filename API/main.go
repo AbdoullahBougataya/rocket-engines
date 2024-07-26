@@ -107,7 +107,12 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+    // Unmarshal JSON data into a Go map
+    var result []map[string]interface{}
+    if err := json.Unmarshal(jsonData, &result); err != nil {
+        log.Fatal(err)
+    }
 
-    // Print JSON data
+    // Print The GO map
     fmt.Println(string(jsonData))
 }
