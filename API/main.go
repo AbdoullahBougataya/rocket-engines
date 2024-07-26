@@ -9,6 +9,8 @@ import (
     "reflect"
 )
 
+// I used the help of AI in this section
+
 // Custom NullValue type
 type NullValue struct {
     StringValue string
@@ -44,7 +46,8 @@ func (nv NullValue) MarshalJSON() ([]byte, error) {
     }
     return json.Marshal("")
 }
-// 
+// End
+
 type Vacsl struct {
     Vac   NullValue    `json:"vaccum"`
     SL    NullValue    `json:"surface_level"`
@@ -107,4 +110,4 @@ func main() {
 
     // Print JSON data
     fmt.Println(string(jsonData))
-}
+}
