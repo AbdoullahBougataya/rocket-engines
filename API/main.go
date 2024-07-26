@@ -46,8 +46,8 @@ func (nv NullValue) MarshalJSON() ([]byte, error) {
 }
 
 type Vacsl struct {
-    Vac   float64    `json:"vaccum"`
-    SL    float64    `json:"surface_level"`
+    Vac   NullValue    `json:"vaccum"`
+    SL    NullValue    `json:"surface_level"`
 }
 type Engine struct {
     Id                  int     `json:"id"`
