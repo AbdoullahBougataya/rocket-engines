@@ -9,9 +9,19 @@ import (
 )
 
 type Record struct {
-    ID    int    `json:"id"`
-    Name  string `json:"name"`
-    Email string `json:"email"`
+    Id          int    `json:"id"`
+    Engine      string `json:"engine"`
+    Origin      string `json:"origin"`
+    Designer    string `json:"designer"`
+    Vehicle     string `json:"vehicle"`
+    Status      string `json:"status"`
+    Use         string `json:"use"`
+    Propellant  string `json:"propellant"`
+    Power_cycle string `json:"power cycle"`
+    Isp_vac    int    `json:"specific impulse vaccum (s)"`
+    Isp_sl    int    `json:"specific impulse surface level (s)"`
+    Thrust_vac    int    `json:"id"`
+    Thrust_sl    int    `json:"id"`
 }
 
 func main() {
