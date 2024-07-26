@@ -8,22 +8,22 @@ import (
     "log"
 )
 type Vacsl struct {
-    Vac   int    `json:"vaccum"`
-    SL    int    `json:"surface_level"`
+    Vac   float64    `json:"vaccum"`
+    SL    float64    `json:"surface_level"`
 }
 type Record struct {
-    Id          int    `json:"id"`
-    Engine      string `json:"engine"`
-    Origin      string `json:"origin"`
-    Designer    string `json:"designer"`
-    Vehicle     string `json:"vehicle"`
-    Status      string `json:"status"`
-    Use         string `json:"use"`
-    Propellant  string `json:"propellant"`
-    Power_cycle string `json:"power_cycle"`
-    Isp         Vacsl  `json:"specific_impulse_(s)"`
-    Thrust      Vacsl  `json:"thrust_(N)"`
-    
+    Id               int     `json:"id"`
+    Engine           string  `json:"engine"`
+    Origin           string  `json:"origin"`
+    Designer         string  `json:"designer"`
+    Vehicle          string  `json:"vehicle"`
+    Status           string  `json:"status"`
+    Use              string  `json:"use"`
+    Propellant       string  `json:"propellant"`
+    Power_cycle      string  `json:"power_cycle"`
+    Isp              Vacsl   `json:"specific_impulse_(s)"`
+    Thrust           Vacsl   `json:"thrust_(N)"`
+    Chamber_pressure float64 `json:"chamber_pressure_(bar)"`
 }
 
 func main() {
