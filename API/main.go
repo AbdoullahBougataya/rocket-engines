@@ -7,7 +7,10 @@ import (
     _ "github.com/mattn/go-sqlite3"
     "log"
 )
-
+type Vacsl struct {
+    Vac   int    `json:"vaccum"`
+    SL    int    `json:"surface_level"`
+}
 type Record struct {
     Id          int    `json:"id"`
     Engine      string `json:"engine"`
@@ -17,7 +20,7 @@ type Record struct {
     Status      string `json:"status"`
     Use         string `json:"use"`
     Propellant  string `json:"propellant"`
-    Power_cycle string `json:"power cycle"`
+    Power_cycle string `json:"power_cycle"`
     Isp_vac    int    `json:"specific impulse vaccum (s)"`
     Isp_sl    int    `json:"specific impulse surface level (s)"`
     Thrust_vac    int    `json:"id"`
