@@ -23,6 +23,7 @@ type Record struct {
     Power_cycle string `json:"power_cycle"`
     Isp         Vacsl  `json:"specific_impulse_(s)"`
     Thrust      Vacsl  `json:"thrust_(N)"`
+    
 }
 
 func main() {
