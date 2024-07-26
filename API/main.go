@@ -9,9 +9,9 @@ import (
 )
 
 type Record struct {
-    Id    int    `json:"id"`
-    Engine  string `json:"engine"`
-    Origin string `json:"origin"`
+    ID    int    `json:"id"`
+    Name  string `json:"name"`
+    Email string `json:"email"`
 }
 
 func main() {
@@ -41,4 +41,3 @@ func main() {
     if err = rows.Err(); err != nil {
         log.Fatal(err)
     }
-}
