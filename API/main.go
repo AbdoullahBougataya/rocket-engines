@@ -21,10 +21,8 @@ type Record struct {
     Use         string `json:"use"`
     Propellant  string `json:"propellant"`
     Power_cycle string `json:"power_cycle"`
-    Isp_vac    int    `json:"specific impulse vaccum (s)"`
-    Isp_sl    int    `json:"specific impulse surface level (s)"`
-    Thrust_vac    int    `json:"id"`
-    Thrust_sl    int    `json:"id"`
+    Isp         Vacsl  `json:"specific_impulse_(s)"`
+    Thrust      Vacsl  `json:"thrust_(N)"`
 }
 
 func main() {
