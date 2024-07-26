@@ -42,26 +42,3 @@ func main() {
         log.Fatal(err)
     }
 }
-
-unsigned int hash(const char *word)
-{
-    int len = 0;
-    while (word[len] != 0)
-    {
-        len++;
-    }
-    if (len <= LENGTH + 1)
-    {
-        if (len == 1)
-        {
-            return toupper(word[0]) - 'A';
-        }
-        else if (word[1] != 39)
-        {
-            // toupper(word[0]) toupper(word[1]) len
-            return 24 + (toupper(word[0]) - 'A') + (toupper(word[1]) - 'A') * 26 + len;
-        }
-        return 24 + (toupper(word[0]) - 'A') + (toupper(word[2]) - 'A') * 26 + len;
-    }
-    return 0;
-}
