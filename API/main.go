@@ -51,20 +51,20 @@ type Vacsl struct {
 }
 type Engine struct {
     Id                  int     `json:"id"`
-    Engine               `json:"engine"`
-    Origin               `json:"origin"`
-    Designer             `json:"designer"`
-    Vehicle              `json:"vehicle"`
-    Status               `json:"status"`
-    Use                  `json:"use"`
-    Propellant           `json:"propellant"`
-    Power_cycle          `json:"power_cycle"`
+    Engine              NullValue `json:"engine"`
+    Origin              NullValue `json:"origin"`
+    Designer            NullValue `json:"designer"`
+    Vehicle             NullValue `json:"vehicle"`
+    Status              NullValue `json:"status"`
+    Use                 NullValue `json:"use"`
+    Propellant          NullValue `json:"propellant"`
+    Power_cycle         NullValue `json:"power_cycle"`
     Isp                 Vacsl   `json:"specific_impulse_(s)"`
     Thrust              Vacsl   `json:"thrust_(N)"`
-    Chamber_pressure     `json:"chamber_pressure_(bar)"`
-    Mass                 `json:"mass_(kg)"`
-    Thrust_weight_ratio  `json:"thrust:weight_ratio"`
-    Oxidiser_fuel_ratio  `json:"oxidiser:fuel_ratio"`
+    Chamber_pressure    NullValue `json:"chamber_pressure_(bar)"`
+    Mass                NullValue `json:"mass_(kg)"`
+    Thrust_weight_ratio NullValue `json:"thrust:weight_ratio"`
+    Oxidiser_fuel_ratio NullValue `json:"oxidiser:fuel_ratio"`
 }
 
 func main() {
