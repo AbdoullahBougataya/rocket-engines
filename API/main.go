@@ -52,7 +52,9 @@ func main() {
         if err != nil {
             log.Fatal(err)
         }
-        records = append(records, record)
+        engine.Isp = isp
+        engine.Thrust = thrust
+        engines = append(engines, engine)
     }
 
     if err = rows.Err(); err != nil {
