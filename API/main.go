@@ -2,24 +2,43 @@ package main
 
 import (
     "database/sql"
+    "encoding/json"
     "fmt"
     _ "github.com/mattn/go-sqlite3"
+    "log"
 )
 
-func main() {
-    // Open the database connection
-    database, err := sql.Open("sqlite3", "../db/database.db")
-    if err != nil {
-        fmt.Println("Error opening database:", err)
-        return
-    }
-    defer database.Close()
+type Record struct {
+    Id    int    `json:"id"`
+    Engine  string `json:"engine"`
+    Origin string `json:"origin"`
+}
 
-    // Perform a query
-    rows, err := database.Query("SELECT * FROM rocket_engines")
+func main() {
+    db, err := sql.Open("sqlite3", "./your-database.db")
     if err != nil {
-        fmt.Println("Error performing query:", err)
-        return
+        log.Fatal(err)
+    }
+    defer db.Close()
+
+    rows, err := db.Query("SELECT id, name, email FROM your_table")
+    if err != nil {
+        log.Fatal(err)
     }
     defer rows.Close()
+
+    var records []Record
+
+    for rows.Next() {
+        var record Record
+        err := rows.Scan(&record.ID, &record.Name, &record.Email)
+        if err != nil {
+            log.Fatal(err)
+        }
+        records = append(records, record)
+    }
+
+    if err = rows.Err(); err != nil {
+        log.Fatal(err)
+    }
 }
