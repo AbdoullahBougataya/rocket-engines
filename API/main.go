@@ -11,7 +11,7 @@ type Vacsl struct {
     Vac   float64    `json:"vaccum"`
     SL    float64    `json:"surface_level"`
 }
-type Record struct {
+type Engine struct {
     Id                  int     `json:"id"`
     Engine              string  `json:"engine"`
     Origin              string  `json:"origin"`
@@ -26,26 +26,28 @@ type Record struct {
     Chamber_pressure    float64 `json:"chamber_pressure_(bar)"`
     Mass                string  `json:"mass_(kg)"`
     Thrust_weight_ratio float64 `json:"thrust:weight_ratio"`
+    Oxidiser_fuel_ratio float64 `json:"oxidiser:fuel_ratio"`
 }
 
 func main() {
-    db, err := sql.Open("sqlite3", "./your-database.db")
+    db, err := sql.Open("sqlite3", "../db/database.db")
     if err != nil {
         log.Fatal(err)
     }
     defer db.Close()
 
-    rows, err := db.Query("SELECT id, name, email FROM your_table")
+    rows, err := db.Query("SELECT * FROM rocket_engines")
     if err != nil {
         log.Fatal(err)
     }
     defer rows.Close()
 
-    var records []Record
+    var engines []Engine
 
     for rows.Next() {
-        var record Record
-        err := rows.Scan(&record.ID, &record.Name, &record.Email)
+        var engine Engine
+        var vacsl Vacsl
+        err := rows.Scan(&engine.ID, &engine.Name, &record.Email)
         if err != nil {
             log.Fatal(err)
         }
