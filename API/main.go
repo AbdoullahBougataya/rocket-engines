@@ -44,7 +44,7 @@ func (nv NullValue) MarshalJSON() ([]byte, error) {
     }
     return json.Marshal("")
 }
-
+// 
 type Vacsl struct {
     Vac   NullValue    `json:"vaccum"`
     SL    NullValue    `json:"surface_level"`
@@ -86,7 +86,7 @@ func main() {
         var engine Engine
         var isp    Vacsl
         var thrust Vacsl
-        err := rows.Scan(&engine.Id, &engine.Engine, &engine.Designer, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.Chamber_pressure, &engine.Mass, &engine.Thrust_weight_ratio, &engine.Oxidiser_fuel_ratio)
+        err := rows.Scan(&engine.Id, &engine.Engine, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.Chamber_pressure, &engine.Mass, &engine.Thrust_weight_ratio, &engine.Oxidiser_fuel_ratio)
         if err != nil {
             log.Fatal(err)
         }
@@ -107,4 +107,4 @@ func main() {
 
     // Print JSON data
     fmt.Println(string(jsonData))
-}
+}
