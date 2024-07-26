@@ -12,18 +12,20 @@ type Vacsl struct {
     SL    float64    `json:"surface_level"`
 }
 type Record struct {
-    Id               int     `json:"id"`
-    Engine           string  `json:"engine"`
-    Origin           string  `json:"origin"`
-    Designer         string  `json:"designer"`
-    Vehicle          string  `json:"vehicle"`
-    Status           string  `json:"status"`
-    Use              string  `json:"use"`
-    Propellant       string  `json:"propellant"`
-    Power_cycle      string  `json:"power_cycle"`
-    Isp              Vacsl   `json:"specific_impulse_(s)"`
-    Thrust           Vacsl   `json:"thrust_(N)"`
-    Chamber_pressure float64 `json:"chamber_pressure_(bar)"`
+    Id                  int     `json:"id"`
+    Engine              string  `json:"engine"`
+    Origin              string  `json:"origin"`
+    Designer            string  `json:"designer"`
+    Vehicle             string  `json:"vehicle"`
+    Status              string  `json:"status"`
+    Use                 string  `json:"use"`
+    Propellant          string  `json:"propellant"`
+    Power_cycle         string  `json:"power_cycle"`
+    Isp                 Vacsl   `json:"specific_impulse_(s)"`
+    Thrust              Vacsl   `json:"thrust_(N)"`
+    Chamber_pressure    float64 `json:"chamber_pressure_(bar)"`
+    Mass                string  `json:"mass_(kg)"`
+    Thrust_weight_ratio float64 `json:"thrust:weight_ratio"`
 }
 
 func main() {
