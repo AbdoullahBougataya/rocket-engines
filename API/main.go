@@ -48,7 +48,7 @@ func main() {
         var engine Engine
         var isp    Vacsl
         var thrust Vacsl
-        err := rows.Scan(&engine.Id, &engine.Engine, &engine.Designer, &engine.Origin, &engine.)
+        err := rows.Scan(&engine.Id, &engine.Engine, &engine.Designer, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.)
         if err != nil {
             log.Fatal(err)
         }
