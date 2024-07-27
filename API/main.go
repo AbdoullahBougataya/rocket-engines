@@ -120,11 +120,7 @@ func get_engines(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    
-    // Convert engines to JSON
-    jsonData, err := json.Marshal(engines)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(engines)
 }
