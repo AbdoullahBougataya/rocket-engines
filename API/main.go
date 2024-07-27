@@ -118,7 +118,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-
+    w.Header().Set("Content-Type", "application/json")
+    w.Write(response)
 }
 
 func main() {
