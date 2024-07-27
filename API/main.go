@@ -80,10 +80,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
     id_str := r.URL.Query().Get("id")
 
     // Convert id from string to int
-    id, err := strconv.Atoi(id_str)
-    if err != nil {
-        http.Error(w, "Invalid id parameter", http.StatusBadRequest)
-        return
+    var id int
+    var err error
+    if ageStr != "" {
+        id, err := strconv.Atoi(id_str)
+        if err != nil {
+            http.Error(w, "Invalid id parameter", http.StatusBadRequest)
+            return
+        }
     }
 
     db, err := sql.Open("sqlite3", "../db/database.db")
