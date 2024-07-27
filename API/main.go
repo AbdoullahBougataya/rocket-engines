@@ -20,6 +20,9 @@ type NullValue struct {
     Valid       bool
 }
 
+// DB instance
+var db *sql.DB
+
 // Implement the Scanner interface
 func (nv *NullValue) Scan(value interface{}) error {
     if value == nil {
@@ -72,6 +75,14 @@ type Engine struct {
 }
 
 func main() {
+    
+    db, err := sql.Open("sqlite3", "../db/database.db")
+
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer db.Close()
+
     // Create a new router
     router := mux.NewRouter()
 
@@ -84,13 +95,6 @@ func main() {
 }
 
 func get_engines(w http.ResponseWriter, r *http.Request) {
-    db, err := sql.Open("sqlite3", "../db/database.db")
-
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer db.Close()
-    
     rows, err := db.Query("SELECT * FROM rocket_engines")
 
     if err != nil {
