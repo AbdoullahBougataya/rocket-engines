@@ -81,13 +81,15 @@ func main() {
     router := mux.NewRouter()
 
     // Define endpoints
-    router.HandleFunc("/engines", getUsers).Methods("GET")
-    router.HandleFunc("/engines/{engine}", getUser).Methods("GET")
+    router.HandleFunc("/engines", get_engines).Methods("GET")
+    router.HandleFunc("/engines/{engine}", get_engine).Methods("GET")
 
     // Start the server
     log.Println("Server is running on port 8080")
     log.Fatal(http.ListenAndServe(":8080", router))
+}
 
+func get_engines(w http.ResponseWriter, r *http.Request) {
     rows, err := db.Query("SELECT * FROM rocket_engines")
     if err != nil {
         log.Fatal(err)
@@ -113,7 +115,7 @@ func main() {
         log.Fatal(err)
     }
 
-    // Convert records to JSON
+    // Convert engines to JSON
     jsonData, err := json.Marshal(engines)
     if err != nil {
         log.Fatal(err)
