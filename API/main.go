@@ -133,7 +133,4 @@ func get_engines(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-
-    w.Header().Set("Content-Type", "application/json")
-    w.Write(json_data)
 }
