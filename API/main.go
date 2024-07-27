@@ -119,6 +119,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
+    json_string = string(json_data)
     w.Header().Set("Content-Type", "application/json")
     w.Write(json_data)
 }
