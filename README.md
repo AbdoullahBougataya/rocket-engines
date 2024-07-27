@@ -7,7 +7,7 @@ One day an idea came to my mind to create a game that simulate rocket developmen
 
 ## Usage
 
-To start serving this API, you should first install [GO](https://go.dev/dl/), then change directory to `/API`. Then run: `go get github.com/mattn/go-sqlite3` after it finishes installing. run the command `go run main.go`. If everything is alright it should show `Server is running on port 8080` after asking you for permition. Make a get request to ``http://localhost:8080/engines` to get started.
+To start serving this API, you should first install [GO](https://go.dev/dl/), then change directory to `/API`. Then run: `go get github.com/mattn/go-sqlite3` after it finishes installing. run the command `go run main.go`. If everything is alright it should show `Server is running on port 8080` after asking you for permition. Make a get request to `http://localhost:8080/engines` to get started.
 
 ## Walkthrough
 > The data scrapping and the database updating is made using [python](https://www.python.org/)
