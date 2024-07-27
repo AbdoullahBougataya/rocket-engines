@@ -23,6 +23,6 @@ To start serving this API, you should first install [GO](https://go.dev/dl/), th
         * The `id` parameter, should be given the number used to identify the engine in the database.
         * The `engine` parameter, should be given the name of the of the rocket engine.
 
-Legal note: scrapping Wikipedia is completely legal.
+Legal note: scrapping Wikipedia is completely legal
 
 This project was made to serve as a final project for CS50.
