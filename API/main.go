@@ -59,7 +59,7 @@ type Vacsl struct {
 }
 type Engine struct {
     Id                  int     `json:"id"`
-    Engine              NullValue `json:"engine"`
+    Engine              string  `json:"engine"`
     Origin              NullValue `json:"origin"`
     Designer            NullValue `json:"designer"`
     Vehicle             NullValue `json:"vehicle"`
