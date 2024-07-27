@@ -8,6 +8,7 @@ import (
     "log"
     "reflect"
     "net/http"
+    "strings"
 )
 
 // I used the help of AI in this section
@@ -121,6 +122,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
     json_string := strings.Replace(string(json_data), "[", "{", -1)
     json_string = strings.Replace(json_string, "]", "}", -1)
+    
     w.Header().Set("Content-Type", "application/json")
     w.Write(json_data)
 }
