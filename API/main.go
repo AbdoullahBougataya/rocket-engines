@@ -73,11 +73,12 @@ type Engine struct {
     Oxidiser_fuel_ratio NullValue `json:"oxidiser:fuel_ratio"`
 }
 
-func main() {
+func handler(w http.ResponseWriter, r *http.Request) {
     db, err := sql.Open("sqlite3", "../db/database.db")
 
     if err != nil {
-        log.Fatal(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
     defer db.Close()
 
@@ -118,4 +119,10 @@ func main() {
         return
     }
 
+}
+
+func main() {
+    http.HandleFunc("/engines", handler)
+    fmt.Println("Server is running on port 8080")
+    log.Fatal(http.ListenAndServe(":8080", nil))
 }
