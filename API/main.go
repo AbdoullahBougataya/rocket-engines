@@ -77,6 +77,17 @@ func main() {
     }
     defer db.Close()
 
+    // Create a new router
+    router := mux.NewRouter()
+
+    // Define endpoints
+    router.HandleFunc("/engines", getUsers).Methods("GET")
+    router.HandleFunc("/engines/{engine}", getUser).Methods("GET")
+
+    // Start the server
+    log.Println("Server is running on port 8080")
+    log.Fatal(http.ListenAndServe(":8080", router))
+
     rows, err := db.Query("SELECT * FROM rocket_engines")
     if err != nil {
         log.Fatal(err)
@@ -107,12 +118,4 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    // Unmarshal JSON data into a Go map
-    var result []map[string]interface{}
-    if err := json.Unmarshal(jsonData, &result); err != nil {
-        log.Fatal(err)
-    }
-
-    // Print The GO map
-    fmt.Println(result)
 }
