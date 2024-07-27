@@ -75,6 +75,17 @@ type Engine struct {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+    // Parse query parameters
+    name := r.URL.Query().Get("name")
+    ageStr := r.URL.Query().Get("age")
+
+    // Convert id from string to int
+    age, err := strconv.Atoi(ageStr)
+    if err != nil {
+        http.Error(w, "Invalid age parameter", http.StatusBadRequest)
+        return
+    }
+
     db, err := sql.Open("sqlite3", "../db/database.db")
 
     if err != nil {
