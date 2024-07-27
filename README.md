@@ -7,7 +7,7 @@ One day an idea came to my mind to create a game that simulate rocket developmen
 
 ## Usage
 
-To start serving this API, 
+To start serving this API, you should first install [GOlang]()
 
 ## Walkthrough
 > The data scrapping and the database updating is made using [python](https://www.python.org/)
