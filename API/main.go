@@ -113,5 +113,5 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    fmt.Printf(string(json_data))
+    
 }
