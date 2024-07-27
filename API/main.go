@@ -82,7 +82,6 @@ func main() {
 
     // Define endpoints
     router.HandleFunc("/engines", get_engines).Methods("GET")
-    router.HandleFunc("/engines/{engine}", get_engine).Methods("GET")
 
     // Start the server
     log.Println("Server is running on port 8080")
