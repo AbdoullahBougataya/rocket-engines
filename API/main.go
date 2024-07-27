@@ -76,13 +76,13 @@ type Engine struct {
 
 func handler(w http.ResponseWriter, r *http.Request) {
     // Parse query parameters
-    name := r.URL.Query().Get("name")
-    ageStr := r.URL.Query().Get("age")
+    engine := r.URL.Query().Get("engine")
+    id_str := r.URL.Query().Get("id")
 
     // Convert id from string to int
-    age, err := strconv.Atoi(ageStr)
+    id, err := strconv.Atoi(id_str)
     if err != nil {
-        http.Error(w, "Invalid age parameter", http.StatusBadRequest)
+        http.Error(w, "Invalid id parameter", http.StatusBadRequest)
         return
     }
 
