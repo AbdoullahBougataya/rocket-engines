@@ -7,8 +7,6 @@ import (
     _ "github.com/mattn/go-sqlite3"
     "log"
     "reflect"
-    "net/http"
-    "github.com/gorilla/mux"
 )
 
 // I used the help of AI in this section
@@ -85,8 +83,7 @@ func main() {
 
     rows, err := db.Query("SELECT * FROM rocket_engines")
     if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
+        log.Fatal(err)
     }
     defer rows.Close()
 
@@ -98,8 +95,7 @@ func main() {
 
         err := rows.Scan(&engine.Id, &engine.Engine, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.Chamber_pressure, &engine.Mass, &engine.Thrust_weight_ratio, &engine.Oxidiser_fuel_ratio)
         if err != nil {
-            http.Error(w, err.Error(), http.StatusInternalServerError)
-            return
+            log.Fatal(err)
         }
 
         engine.Isp = isp
@@ -109,15 +105,13 @@ func main() {
 
     err = rows.Err()
     if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
+        log.Fatal(err)
     }
 
     // Respond with the parsed data
     json_data, err := json.Marshal(engines)
     if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
+        log.Fatal(err)
     }
     fmt.Printf(string(json_data))
 }
