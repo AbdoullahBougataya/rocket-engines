@@ -91,6 +91,7 @@ func main() {
 
 func get_engines(w http.ResponseWriter, r *http.Request) {
     rows, err := db.Query("SELECT * FROM rocket_engines")
+
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
@@ -98,28 +99,32 @@ func get_engines(w http.ResponseWriter, r *http.Request) {
     defer rows.Close()
 
     var engines []Engine
-
     for rows.Next() {
         var engine Engine
         var isp    Vacsl
         var thrust Vacsl
+
         err := rows.Scan(&engine.Id, &engine.Engine, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.Chamber_pressure, &engine.Mass, &engine.Thrust_weight_ratio, &engine.Oxidiser_fuel_ratio)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
             return
         }
+
         engine.Isp = isp
         engine.Thrust = thrust
         engines = append(engines, engine)
     }
 
-    if err = rows.Err(); err != nil {
-        log.Fatal(err)
+    err = rows.Err()
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
-
+    
     // Convert engines to JSON
     jsonData, err := json.Marshal(engines)
     if err != nil {
-        log.Fatal(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
 }
