@@ -128,6 +128,18 @@ func handler(w http.ResponseWriter, r *http.Request) {
         return
     }
 
+    // Filter data based on query parameters
+    var filteredData []Engine
+    for _, item := range engines {
+        if engine != "" && item. != name {
+            continue
+        }
+        if ageStr != "" && item.Age != age {
+            continue
+        }
+        filteredData = append(filteredData, item)
+    }
+
     // Respond with the parsed data
     json_data, err := json.Marshal(engines)
     if err != nil {
