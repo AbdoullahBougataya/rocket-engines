@@ -76,7 +76,7 @@ type Engine struct {
 
 func handler(w http.ResponseWriter, r *http.Request) {
     // Parse query parameters
-    engine := r.URL.Query().Get("engine")
+    q_engine := r.URL.Query().Get("engine")
     id_str := r.URL.Query().Get("id")
 
     // Convert id from string to int
@@ -129,19 +129,23 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
 
     // Filter data based on query parameters
-    var filteredData []Engine
-    for _, item := range engines {
-        if engine != "" && item.engine != engine {
-            continue
+    var filtered_data []Engine
+    if name != "" || ageStr != "" {
+        for _, item := range engines {
+            if engine != "" && item.engine != engine {
+                continue
+            }
+            if id_str != "" && item.id != id {
+                continue
+            }
+            filtered_data = append(filtered_data, item)
         }
-        if id_str != "" && item.id != id {
-            continue
-        }
-        filteredData = append(filteredData, item)
     }
-
+    else {
+        filtered_data = engines
+    }
     // Respond with the parsed data
-    json_data, err := json.Marshal(engines)
+    json_data, err := json.Marshal(filtered_data)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
