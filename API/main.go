@@ -8,6 +8,7 @@ import (
     "log"
     "reflect"
     "net/http"
+    "strconv"
 )
 
 // I used the help of AI in this section
@@ -82,7 +83,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
     // Convert id from string to int
     var id int
     var err error
-    if ageStr != "" {
+    if id_str != "" {
         id, err := strconv.Atoi(id_str)
         if err != nil {
             http.Error(w, "Invalid id parameter", http.StatusBadRequest)
