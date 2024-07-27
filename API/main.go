@@ -8,6 +8,7 @@ import (
     "log"
     "reflect"
     "net/http"
+    "github.com/gorilla/mux"
 )
 
 // I used the help of AI in this section
@@ -75,7 +76,7 @@ type Engine struct {
 }
 
 func main() {
-    
+
     db, err := sql.Open("sqlite3", "../db/database.db")
 
     if err != nil {
