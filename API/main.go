@@ -133,10 +133,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
     var filtered_data []Engine
     if q_engine != "" || id_str != "" {
         for _, item := range engines {
-            if q_engine != "" && item.engine != q_engine {
+            if q_engine != "" && item.Engine != q_engine {
                 continue
             }
-            if id_str != "" && item.id != id {
+            if id_str != "" && item.Id != id {
                 continue
             }
             filtered_data = append(filtered_data, item)
