@@ -130,9 +130,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
     // Filter data based on query parameters
     var filtered_data []Engine
-    if name != "" || ageStr != "" {
+    if q_engine != "" || id_str != "" {
         for _, item := range engines {
-            if engine != "" && item.engine != engine {
+            if q_engine != "" && item.engine != q_engine {
                 continue
             }
             if id_str != "" && item.id != id {
