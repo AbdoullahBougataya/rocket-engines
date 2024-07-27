@@ -120,22 +120,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    json_string := strings.Replace(string(json_data), "[", "{", -1)
-    json_string = strings.Replace(json_string, "]", "}", -1)
-    // Unmarshal the JSON string into the struct
-    var data Engine
-    err := json.Unmarshal([]byte(jsonString), &data)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
-
-    // Respond with the parsed data
-    response, err := json.Marshal(data)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
     w.Header().Set("Content-Type", "application/json")
     w.Write(json_data)
 }
