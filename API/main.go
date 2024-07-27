@@ -119,5 +119,5 @@ func main() {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    
+    fmt.Printf(string(json_data))
 }
