@@ -83,7 +83,8 @@ func main() {
 
     rows, err := db.Query("SELECT * FROM rocket_engines")
     if err != nil {
-        log.Fatal(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
     defer rows.Close()
 
@@ -95,7 +96,8 @@ func main() {
 
         err := rows.Scan(&engine.Id, &engine.Engine, &engine.Origin, &engine.Designer, &engine.Vehicle, &engine.Status, &engine.Use, &engine.Propellant, &engine.Power_cycle, &isp.Vac, &isp.SL, &thrust.Vac, &thrust.SL, &engine.Chamber_pressure, &engine.Mass, &engine.Thrust_weight_ratio, &engine.Oxidiser_fuel_ratio)
         if err != nil {
-            log.Fatal(err)
+            http.Error(w, err.Error(), http.StatusInternalServerError)
+            return
         }
 
         engine.Isp = isp
@@ -105,13 +107,15 @@ func main() {
 
     err = rows.Err()
     if err != nil {
-        log.Fatal(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
 
     // Respond with the parsed data
     json_data, err := json.Marshal(engines)
     if err != nil {
-        log.Fatal(err)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
     }
-    
+
 }
