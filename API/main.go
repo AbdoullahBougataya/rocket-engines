@@ -75,6 +75,10 @@ type Engine struct {
     Oxidiser_fuel_ratio NullValue `json:"oxidiser:fuel_ratio"`
 }
 
+func welcome_handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "Welcome to rocket engines API 🚀.")
+}
+
 func handler(w http.ResponseWriter, r *http.Request) {
     // Parse query parameters
     q_engine := r.URL.Query().Get("engine")
@@ -132,11 +136,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
     // Filter data based on query parameters
     var filtered_data []Engine
     if q_engine != "" || id_str != "" {
-        for _, item := range engines {
-            if q_engine != "" && item.Engine != q_engine {
+	for _, item := range engines {
+	    if id_str != "" && item.Id != id {
                 continue
             }
-            if id_str != "" && item.Id != id {
+	    filtered_data = append(filtered_data, item)
+	}
+        for _, item := range engines {
+            if q_engine != "" && item.Engine != q_engine {
                 continue
             }
             filtered_data = append(filtered_data, item)
@@ -155,6 +162,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+    http.HandleFunc("/", welcome_handler)
     http.HandleFunc("/engines", handler)
     fmt.Println("Server is running on port 8080")
     log.Fatal(http.ListenAndServe(":8080", nil))
