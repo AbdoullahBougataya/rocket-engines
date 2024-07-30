@@ -150,6 +150,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
             filtered_data = append(filtered_data, item)
         }
     } else if q_engine != "" && id_str != "" {
+        for _, item := range engines {
+            if q_engine != "" && (item.Engine != q_engine || item.Id != id) {
+                continue
+            }
+            filtered_data = append(filtered_data, item)
+        }
     } else {
         filtered_data = engines
     }
