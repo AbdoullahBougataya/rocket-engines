@@ -135,13 +135,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
     // Filter data based on query parameters
     var filtered_data []Engine
-    if id_str != "" {
-	    for _, item := range engines {
-	        if id_str != "" && item.Id != id {
+    if q_engine != "" && id_str != "" {
+        for _, item := range engines {
+            if q_engine != "" && item.Engine != q_engine && item.Id != id {
                 continue
             }
-	        filtered_data = append(filtered_data, item)
-	    }
+            filtered_data = append(filtered_data, item)
+        }
     } else if q_engine != "" {
         for _, item := range engines {
             if q_engine != "" && item.Engine != q_engine {
@@ -149,13 +149,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
             }
             filtered_data = append(filtered_data, item)
         }
-    } else if q_engine != "" && id_str != "" {
-        for _, item := range engines {
-            if q_engine != "" && (item.Engine != q_engine || item.Id != id) {
+    } else if id_str != "" {
+	    for _, item := range engines {
+	        if id_str != "" && item.Id != id {
                 continue
             }
-            filtered_data = append(filtered_data, item)
-        }
+	        filtered_data = append(filtered_data, item)
+	    }
     } else {
         filtered_data = engines
     }
