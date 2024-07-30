@@ -149,6 +149,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
             }
             filtered_data = append(filtered_data, item)
         }
+    } else if q_engine != "" && id_str != "" {
     } else {
         filtered_data = engines
     }
