@@ -29,7 +29,7 @@ First you will have to install [GO](https://go.dev/):
 2. Open the MSI file you downloaded and follow the prompts to install Go.
 By default, the installer will install Go to Program Files or Program Files (x86). You can change the location as needed. After installing, you will need to close and reopen any open command prompts so that changes to the environment made by the installer are reflected at the command prompt.
 ### MacOS
-You can download installer GO using the link [here](https://go.dev/dl/).
+1. You can download installer GO using the link [here](https://go.dev/dl/).
 ### Linux
 
 Legal note: scrapping Wikipedia is completely legal.
