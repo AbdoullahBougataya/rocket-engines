@@ -25,7 +25,7 @@ To start serving this API, you should first install [GO](https://go.dev/dl/), th
 ## Usage
 First you will have to install [GO](https://go.dev/):
 ### Windows
-
+You can download 
 
 Legal note: scrapping Wikipedia is completely legal.
 
