@@ -4,9 +4,9 @@
 ## Introduction
 One day an idea came to my mind to create a game that simulate rocket development using real world rocket physics. So naturally a started searching for an API that stores data about orbital rocket engines. I found many [APIs](https://github.com/r-spacex/SpaceX-API) related to space launch systems but I was not able to find a proper API that stores in informations about rocket engines. Due to the hard nature of creating a game that simulate rocket development and my limited knowledge in game development I decided to cancel that project and rather decided to focus on making an **API that stores orbital rocket engines** informations.
 
-## Usage
+## Get started
 
-To start serving this API, you should first install [GO](https://go.dev/dl/), then change directory to `/API`. Then run: `go get github.com/mattn/go-sqlite3` after it finishes installing. run the command `go run main.go`. If everything is alright it should show `Server is running on port 8080` after asking you for permition. Make a get request to `http://localhost:8080/engines` to get started.
+To start serving this API, you should first install [GO](https://go.dev/dl/), then change directory to `/API`. Then run: `go get github.com/mattn/go-sqlite3` after it finishes installing. run the command `go run main.go`. If everything is alright it should show `Server is running on port 8080` after asking you for permition. Make a get request to `http://localhost:8080/welcome` to get started.
 
 ## Walkthrough
 > The data scrapping and the database updating is made using [python](https://www.python.org/)
