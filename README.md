@@ -28,6 +28,7 @@ First you will have to install [GO](https://go.dev/):
 You can download and install GO using the link [here](https://go.dev/dl/).
 ### MacOS
 You can download and install GO using the link [here](https://go.dev/dl/).
+### Linux
 
 Legal note: scrapping Wikipedia is completely legal.
 
