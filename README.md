@@ -46,7 +46,9 @@ You can do this by adding the following line to your $HOME/.profile or /etc/prof
 
 **Note:** Changes made to a profile file may not apply until the next time you log into your computer. To apply the changes immediately, just run the shell commands directly or execute them from the profile using a command such as source $HOME/.profile.
 
+### How to run it
 
+First you will have to open the terminal in the projects directory, then change th directory to API using the `cd ./API` command. After that execute the GOlang file `main.go` using the command `go run main.go`, if you get an error telling that a package is required then ``
 
 Legal note: scrapping Wikipedia is completely legal.
 
