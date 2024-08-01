@@ -17,7 +17,7 @@ To start serving this API, you should first install [GO](https://go.dev/dl/), th
 > The API is made using [GOlang](https://www.go.dev/)
 * The file `API/main.go` fetch the data from the database in `db/database.db` and serve it in JSON format as a Restful API
     * The API runs on port 8080.
-    * Currently the API have only one endpoint `/engines`.
+    * Currently the API have only two endpoints `/engines` and `/welcome`.
     * The API supports two parameters:
         * The `id` parameter, should be given the number used to identify the engine in the database.
         * The `engine` parameter, should be given the name of the of the rocket engine.
