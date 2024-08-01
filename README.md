@@ -23,7 +23,9 @@ To start serving this API, you should first install [GO](https://go.dev/dl/), th
         * The `id` parameter, should be given the number used to identify the engine in the database.
         * The `engine` parameter, should be given the name of the of the rocket engine.
 ## Usage
-First you will have to
+First you will have to install [GO]:
+### Windows
+
 
 Legal note: scrapping Wikipedia is completely legal.
 
