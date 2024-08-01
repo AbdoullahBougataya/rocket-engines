@@ -48,7 +48,7 @@ You can do this by adding the following line to your $HOME/.profile or /etc/prof
 
 ### How to run it
 
-First you will have to open the terminal in the projects directory, then change th directory to API using the `cd ./API` command. After that execute the GOlang file `main.go` using the command `go run main.go`, if you get an error telling that a package is required then ``
+First you will have to open the terminal in the projects directory, then change the directory to API using the `cd ./API` command. After that, execute the GOlang file `main.go` using the command `go run main.go`, if you get an error telling that a package is required or missing then run `go get github.com/mattn/go-sqlite3`. If everything runs smoothly you should get a message ``
 
 Legal note: scrapping Wikipedia is completely legal.
 
