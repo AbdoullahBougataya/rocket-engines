@@ -8,4 +8,4 @@ goog_search = "https://www.google.co.uk/search?sclient=psy-ab&client=ubuntu&hs=k
 r = requests.get(goog_search)
 
 soup = BeautifulSoup(r.text, "html.parser")
-print(soup.find('cite').text)
+print(soup.find('cite'))
