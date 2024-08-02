@@ -23,7 +23,7 @@ for engine in engines:
         if soup.find("table", {"class" : "infobox"}):
             if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}):
                 if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
-                    print(requests.get("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])))
+                    print("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2]))
                     img_data = requests.get("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])).content
                     with open(f'images/{engine_name}.jpg', 'wb') as handler:
                         handler.write(img_data)
