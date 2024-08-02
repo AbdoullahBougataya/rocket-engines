@@ -10,5 +10,7 @@ r = requests.get(goog_search)
 soup = BeautifulSoup(r.text, "html.parser")
 search_result = soup.find_all("a")
 for i in range(len(search_result)):
-    if ""
-print(search_result)
+    if "https://en.wikipedia.org/wiki/" in str(search_result[i]):
+        the_link = search_result[i]
+        break
+print(the_link)
