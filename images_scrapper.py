@@ -13,4 +13,6 @@ for i in range(len(search_result)):
     if "https://en.wikipedia.org/wiki/" in str(search_result[i]):
         the_link = search_result[i]
         break
-print(str(the_link.get('href')).removeprefix("/url?q=").split("&")[0])
+if the_link:
+    wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
+    print(wikipedia_link)
