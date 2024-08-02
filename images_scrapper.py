@@ -15,4 +15,6 @@ for i in range(len(search_result)):
         break
 if the_link:
     wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
-    print(wikipedia_link)
+    r = requests.get(wikipedia_link)
+    soup = BeautifulSoup(r.text, "html.parser")
+    print(soup.find_all("img")[0])
