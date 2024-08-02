@@ -18,5 +18,5 @@ if the_link:
     r = requests.get(wikipedia_link)
     soup = BeautifulSoup(r.text, "html.parser")
     img_data = requests.get("https:" + str(soup.find_all("img")[4].get("srcset").split()[2])).content
-    with open(f'{engine_name}.jpg', 'wb') as handler:
+    with open(f'./images/{engine_name}.jpg', 'wb') as handler:
         handler.write(img_data)
