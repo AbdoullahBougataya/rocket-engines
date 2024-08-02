@@ -8,4 +8,5 @@ goog_search = "https://www.google.co.uk/search?sclient=psy-ab&client=ubuntu&hs=k
 r = requests.get(goog_search)
 
 soup = BeautifulSoup(r.text, "html.parser")
-print(soup.find('cite'))
+search_result = soup.find("div", { "id" : "search" })
+print(search_result.find_all("a")[0])
