@@ -9,4 +9,4 @@ r = requests.get(goog_search)
 
 soup = BeautifulSoup(r.text, "html.parser")
 search_result = soup.find("div", { "id" : "search" })
-print(search_result.find_all("a")[0])
+print(search_result)
