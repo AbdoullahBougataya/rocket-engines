@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-research_later = "F-1"
-goog_search = "https://www.google.com/search?sclient=psy-ab&client=ubuntu&hs=k5b&channel=fs&biw=1366&bih=648&noj=1&q=" + research_later.replace(" ", "+") + "+rocket+engine+wikipedia"
+engine_name = "F-1"
+goog_search = "https://www.google.com/search?sclient=psy-ab&client=ubuntu&hs=k5b&channel=fs&biw=1366&bih=648&noj=1&q=" + engine_name.replace(" ", "+") + "+rocket+engine+wikipedia"
 
 
 r = requests.get(goog_search)
@@ -18,5 +18,5 @@ if the_link:
     r = requests.get(wikipedia_link)
     soup = BeautifulSoup(r.text, "html.parser")
     img_data = requests.get(str(soup.find_all("img")[4].get("srcset").split()[2]).removeprefix("//")).content
-    with open(f'{}.jpg', 'wb') as handler:
+    with open(f'{engine_name}.jpg', 'wb') as handler:
         handler.write(img_data)
