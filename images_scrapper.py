@@ -20,7 +20,10 @@ for engine in engines:
         wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
         r = requests.get(wikipedia_link)
         soup = BeautifulSoup(r.text, "html.parser")
-        if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
-            img_data = requests.get("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])).content
-            with open(f'images/{engine_name}.jpg', 'wb') as handler:
-                handler.write(img_data)
+        if soup.find("table", {"class" : "infobox"}):
+            if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}):
+                if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
+                    print(requests.get("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])))
+                    img_data = requests.get("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])).content
+                    with open(f'images/{engine_name}.jpg', 'wb') as handler:
+                        handler.write(img_data)
