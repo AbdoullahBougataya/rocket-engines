@@ -50,8 +50,8 @@ You can do this by adding the following line to your $HOME/.profile or /etc/prof
 First you will have to open the terminal in the projects directory, then change the directory to API using the `cd ./API` command. After that, execute the GOlang file `main.go` using the command `go run main.go`, if you get an error telling that a package is required or missing then run `go get github.com/mattn/go-sqlite3`. If everything runs smoothly you should get a message `Server is running on port 8080`, It may ask you for permission so make sure you press allow.
 
 After that you can open your prferred http client and send a get request to `http://localhost:8080/welcome`, And you will see a welcome message. Then you can send a get request to `http://localhost:8080/engines` to get all the information about the engines, you can add query parameters to the previous command, the query parameters compatible are:
-    * `id`: to get a specific engine using its id.
-    * `engine`: to get a specific engine using its name.
+* `id`: to get a specific engine using its id.
+* `engine`: to get a specific engine using its name.
 
 Legal note: scrapping Wikipedia is completely legal.
 
