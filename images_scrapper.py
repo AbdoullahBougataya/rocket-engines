@@ -8,5 +8,5 @@ goog_search = "https://www.google.com/search?sclient=psy-ab&client=ubuntu&hs=k5b
 r = requests.get(goog_search)
 
 soup = BeautifulSoup(r.text, "html.parser")
-search_result = soup.find("div", { "class" : "GyAeWb" })
+search_result = soup.find_all("div", { "class" : "cnt" })
 print(search_result)
