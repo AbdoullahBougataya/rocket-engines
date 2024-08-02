@@ -20,7 +20,7 @@ for engine in engines:
         wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
         r = requests.get(wikipedia_link)
         soup = BeautifulSoup(r.text, "html.parser")
-        img_data = requests.get("https:" + str(soup.find_all("img")[4].get("srcset").split()[2])).content
-        if img_data:
+        if soup.find_all("img")[4].get("srcset"):
+            img_data = requests.get("https:" + str(soup.find_all("img")[4].get("srcset").split()[2])).content
             with open(f'images/{engine_name}.jpg', 'wb') as handler:
                 handler.write(img_data)
