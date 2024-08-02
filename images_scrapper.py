@@ -17,6 +17,6 @@ if the_link:
     wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
     r = requests.get(wikipedia_link)
     soup = BeautifulSoup(r.text, "html.parser")
-    img_data = requests.get(str(soup.find_all("img")[4].get("srcset").split()[2]).removeprefix("//")).content
+    img_data = requests.get("https:" + str(soup.find_all("img")[4].get("srcset").split()[2])).content
     with open(f'{engine_name}.jpg', 'wb') as handler:
         handler.write(img_data)
