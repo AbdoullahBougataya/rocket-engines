@@ -38,6 +38,6 @@ for engine in engines:
         if soup.find("table", {"class" : "infobox"}):
             if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}):
                 if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
-                    if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2:
+                    if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2 and "Aeon" not in engine_name:
                         pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
                         download_image(pic_url, f"./images/{engine_name}.jpg")
