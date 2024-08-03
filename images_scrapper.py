@@ -40,4 +40,4 @@ for engine in engines:
                 if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
                     if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2:
                         pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
-                        download_image(pic_url, f"/images/{engine_name}.jpg")
+                        download_image(pic_url, f"./images/{engine_name}.jpg")
