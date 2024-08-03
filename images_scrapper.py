@@ -14,9 +14,6 @@ def download_image(image_url, file_dir):
 
         with open(file_dir, "wb") as fp:
             fp.write(response.content)
-        print("downloaded " + image_url + " to " + file_dir)
-    else:
-        print(f"Failed to download " +  image_url + " to " + file_dir + f"Status code: {response.status_code}")
 
 # Clear the images file
 for filename in os.listdir("./images"):
