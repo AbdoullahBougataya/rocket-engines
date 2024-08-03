@@ -57,4 +57,6 @@ def images_scrapper():
                             pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
                             download_image(pic_url, f"./images/{engine_name}.jpg")
                             paths += f"./images/{engine_name}.jpg"
-                            
+    return paths
+
+sys.modules[__name__] = images_scrapper
