@@ -4,7 +4,7 @@ import scrapper
 import os
 
 def download_image(image_url, file_dir):
-    response = requests.get(image_url)
+    response = requests.get(image_url, {'User-Agent': 'copied user agent that came out when I googled it'})
 
     if response.status_code == 200:
         directory = os.path.dirname(file_dir)
