@@ -1,6 +1,7 @@
 # Rocket Engines API 🚀
->[!TIP]
->
+
+> [!TIP]
+> **New**: The API now serves images of the rocket engines!
 
 > [!WARNING]
 > The data scrapped to the database have been modified several times throughout the code, so keep in mind that the data is a bare approximate and doesn't always reflect real world circumstances.
