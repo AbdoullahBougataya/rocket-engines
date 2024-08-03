@@ -60,7 +60,7 @@ def images_scrapper():
                             download_image(pic_url, path)
         c += 1
         print(f"{int(100 * (c/len(engines)))}% done")
-        paths += tuple(path)
+        paths = (paths, path)
     return paths
 
 sys.modules[__name__] = images_scrapper
