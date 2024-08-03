@@ -1,6 +1,6 @@
 import sqlite3
 import scrapper
-import images_scrapper
+import images_links
 
 con = sqlite3.connect('db\database.db')
 
@@ -12,7 +12,7 @@ cur.execute("DROP TABLE IF EXISTS rocket_engines")
 
 titles, engines = scrapper()
 
-images = images_scrapper()
+images = images_links()
 
 # Creating table
 table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL PRIMARY KEY, """
@@ -29,9 +29,8 @@ cur.execute(table)
 print("Table is Ready")
 print("Filling the database...")
 for i in range(len(engines)):
-    img = "http://localhost:8080" + images[i]
     cur = con.cursor()
-    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (img, )};".replace("''", "NULL"))
+    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (images[i], )};".replace("''", "NULL"))
     con.commit()
     print(f"{int(100 * (i/len(engines)))}% done")
 print(f'100% done')

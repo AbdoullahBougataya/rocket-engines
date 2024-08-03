@@ -4,9 +4,9 @@ import scrapper
 import sys
 
 # This function get the links of images of rocket engines
-def images_scrapper():
+def images_links():
     engines = scrapper()[1]
-    print("Downloading images...")
+    print("Getting images links...")
     paths = ()
     c = 0
     for engine in engines:
@@ -35,4 +35,4 @@ def images_scrapper():
     print(f"100% done")
     return paths
 
-sys.modules[__name__] = images_scrapper
+sys.modules[__name__] = images_links
