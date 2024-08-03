@@ -78,6 +78,7 @@ def scrapper():
                 row += tuple(map(str, [string_element]))
                 if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                     row += tuple(map(str, [""]))
+        print(f"{(i/len(rows_bs)) * 50}% done")
         # append the data with the newly made row if it is not empty
         if row != ():
             data.append(row)
@@ -140,7 +141,7 @@ def scrapper():
                 row += tuple(map(str, [string_element]))
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
-
+        print(f"{(i/len(rows_bs)) * 50 + 50}% done")
         # append the data with the newly made row if it is not empty
         if row != ():
             if row[0] == 'P230':
