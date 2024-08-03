@@ -33,7 +33,7 @@ for i in range(len(engines)):
     cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (images[i], )};".replace("''", "NULL"))
     con.commit()
     print(f"{int(100 * (i/len(engines)))}% done")
-
+print(f'100% done')
 print("Table successfully filled")
 # Close the connection
 con.close()

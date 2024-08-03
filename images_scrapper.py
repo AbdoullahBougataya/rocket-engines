@@ -60,8 +60,8 @@ def images_scrapper():
                             download_image(pic_url, path)
         c += 1
         print(f"{int(100 * (c/len(engines)))}% done")
-        print(f"100% done")
-        paths = (paths, path)
+        paths += (path, )
+    print(f"100% done")
     print(paths)
     return paths
 images_scrapper()
