@@ -1,4 +1,5 @@
 # Rocket Engines API 🚀
+
 > [!WARNING]
 > The data scrapped to the database have been modified several times throughout the code, so keep in mind that the data is a bare approximate and doesn't always reflect real world circumstances.
 ## Introduction
@@ -52,8 +53,6 @@ First you will have to open the terminal in the projects directory, then change 
 After that you can open your prferred http client and send a get request to `http://localhost:8080/welcome`, And you will see a welcome message. Then you can send a get request to `http://localhost:8080/engines` to get all the information about the engines, you can add query parameters to the previous command, the query parameters compatible are:
 * `id`: to get a specific engine using its id.
 * `engine`: to get a specific engine using its name.
-## In progress
-I am currently working on making the API serve images of the rocket engines.
 
 Legal note: scrapping Wikipedia is completely legal.
 
