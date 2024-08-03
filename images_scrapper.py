@@ -56,7 +56,7 @@ def images_scrapper():
                     if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
                         if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2 and "Aeon" not in engine_name:
                             pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
-                            path = f"./images/{engine_name}.jpg"
+                            path = f"/images/{engine_name}.jpg"
                             download_image(pic_url, path)
         c += 1
         print(f"{int(100 * (c/len(engines)))}% done")

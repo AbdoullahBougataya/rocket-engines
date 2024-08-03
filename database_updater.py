@@ -29,7 +29,7 @@ cur.execute(table)
 print("Table is Ready")
 print("Filling the database...")
 for i in range(len(engines)):
-    img = images[i].replace(".", "http://localhost:8080")
+    img = "http://localhost:8080" + images[i]
     cur = con.cursor()
     cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (img, )};".replace("''", "NULL"))
     con.commit()
