@@ -4,7 +4,7 @@ import scrapper
 import os
 
 def download_image(image_url, file_dir):
-    response = requests.get(image_url, headers = {'User-Agent': 'Mozilla/5.0'})
+    response = requests.get(image_url, headers = {'User-Agent': 'NicoBot/0.1 (your@email.address)'})
 
     if response.status_code == 200:
         directory = os.path.dirname(file_dir)
