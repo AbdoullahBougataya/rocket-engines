@@ -30,7 +30,7 @@ for engine in engines:
                         with open(f'images/{engine_name}.jpg', 'wb') as handler:
                             response = requests.get(pic_url, stream=True)
                             while response.status_code != 200:
-                                print(response.status_code)
+                                response = requests.get(pic_url, stream=True)
                             for block in response.iter_content(512):
                                 if not block:
                                     break
