@@ -29,8 +29,8 @@ for filename in os.listdir("./images"):
 
 # This function scrappes images of rocket engines
 def images_scrapper():
-    print("Downloading images...")
     engines = scrapper()[1]
+    print("Downloading images...")
     paths = ()
     c = 0
     for engine in engines:
@@ -60,8 +60,9 @@ def images_scrapper():
                             download_image(pic_url, path)
         c += 1
         print(f"{int(100 * (c/len(engines)))}% done")
+        print(f"100% done")
         paths = (paths, path)
     print(paths)
     return paths
-
+images_scrapper()
 sys.modules[__name__] = images_scrapper

@@ -142,6 +142,7 @@ def scrapper():
                 if titlesr[j] == 'Power cycle' or titlesr[j] == 'Specific impulse Vac (s)':
                     row += tuple(map(str, [""]))
         print(f"{int((i/len(rows_bs)) * 50 + 50)}% done")
+        print(f"100% done")
         # append the data with the newly made row if it is not empty
         if row != ():
             if row[0] == 'P230':
