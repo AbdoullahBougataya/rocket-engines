@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import scrapper
 import os, shutil
+import sys
 
 # This function download images from a given URL to a file directory
 def download_image(image_url, file_dir):
@@ -28,8 +29,10 @@ for filename in os.listdir("./images"):
 
 # This function scrappes images of rocket engines
 def images_scrapper():
+    print("Downloading images...")
     engines = scrapper()[1]
     paths = ()
+    c = 0
     for engine in engines:
         path = ""
         engine_name = engine[0]
@@ -55,7 +58,9 @@ def images_scrapper():
                             pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
                             path = f"./images/{engine_name}.jpg"
                             download_image(pic_url, path)
-        paths += path
+        c += 1
+        print(f"{100 * (c/len(engines))} % done")
+        paths += tuple(path)
     return paths
 
 sys.modules[__name__] = images_scrapper
