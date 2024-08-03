@@ -28,9 +28,7 @@ for engine in engines:
                         pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
                         with open(f'images/{engine_name}.jpg', 'wb') as handler:
                             response = requests.get(pic_url, stream=True)
-                            if not response.ok:
-                                print(response)
                             for block in response.iter_content(1024):
                                 if not block:
                                     break
-                                handle.write(block)
+                                handler.write(block)
