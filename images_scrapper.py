@@ -62,7 +62,6 @@ def images_scrapper():
         print(f"{int(100 * (c/len(engines)))}% done")
         paths += (path, )
     print(f"100% done")
-    print(paths)
     return paths
-images_scrapper()
+
 sys.modules[__name__] = images_scrapper
