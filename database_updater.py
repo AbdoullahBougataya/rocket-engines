@@ -30,7 +30,7 @@ print("Table is Ready")
 print("Filling the database...")
 for i in range(len(engines)):
     cur = con.cursor()
-    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (images[i], )};".replace("''", "NULL"))
+    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + (images[i].replace(".", "localhost:8080"), )};".replace("''", "NULL"))
     con.commit()
     print(f"{int(100 * (i/len(engines)))}% done")
 print(f'100% done')
