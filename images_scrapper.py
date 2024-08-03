@@ -4,7 +4,7 @@ import scrapper
 import os
 
 def download_image(image_url, file_dir):
-    response = requests.get(image_url, {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'})
+    response = requests.get(image_url, headers = {'User-Agent': 'Mozilla/5.0'})
 
     if response.status_code == 200:
         directory = os.path.dirname(file_dir)
