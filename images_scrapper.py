@@ -31,6 +31,7 @@ def images_scrapper():
     engines = scrapper()[1]
     paths = ()
     for engine in engines:
+        path = ""
         engine_name = engine[0]
         goog_search = "https://www.google.com/search?sclient=psy-ab&client=ubuntu&hs=k5b&channel=fs&biw=1366&bih=648&noj=1&q=" + engine_name.replace(" ", "+") + "+rocket+engine+wikipedia"
 
@@ -52,8 +53,9 @@ def images_scrapper():
                     if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
                         if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2 and "Aeon" not in engine_name:
                             pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
-                            download_image(pic_url, f"./images/{engine_name}.jpg")
-                            paths += f"./images/{engine_name}.jpg"
+                            path = f"./images/{engine_name}.jpg"
+                            download_image(pic_url, path)
+        paths += path
     return paths
 
 sys.modules[__name__] = images_scrapper

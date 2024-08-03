@@ -1,5 +1,6 @@
 import sqlite3
 import scrapper
+import images_scrapper
 
 con = sqlite3.connect('db\database.db')
 
@@ -11,6 +12,8 @@ cur.execute("DROP TABLE IF EXISTS rocket_engines")
 
 titles, engines = scrapper()
 
+images = images_scrapper()
+
 # Creating table
 table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL PRIMARY KEY, """
 for i in range(len(titles)):
@@ -20,7 +23,7 @@ for i in range(len(titles)):
     elif type(engines[17][i]) == float:
         table += """ REAL, """
 table = table.removesuffix(""", """)
-table += """); """
+table += """Image TEXT); """
 cur.execute(table)
 
 print("Table is Ready")
