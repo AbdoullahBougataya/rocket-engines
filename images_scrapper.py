@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import scrapper
+import time
 
 titles, engines = scrapper()
 for engine in engines:
@@ -32,3 +33,4 @@ for engine in engines:
                                 if not block:
                                     break
                                 handler.write(block)
+                        time.sleep(3)
