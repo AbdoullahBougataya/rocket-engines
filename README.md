@@ -1,8 +1,12 @@
 # Rocket Engines API 🚀
+>[!TIP]
+>
 
 > [!WARNING]
 > The data scrapped to the database have been modified several times throughout the code, so keep in mind that the data is a bare approximate and doesn't always reflect real world circumstances.
+
 ## Introduction
+
 One day an idea came to my mind to create a game that simulate rocket development using real world rocket physics. So naturally a started searching for an API that stores data about orbital rocket engines. I found many [APIs](https://github.com/r-spacex/SpaceX-API) related to space launch systems but I was not able to find a proper API that stores in informations about rocket engines. Due to the hard nature of creating a game that simulate rocket development and my limited knowledge in game development I decided to cancel that project and rather decided to focus on making an **API that stores orbital rocket engines** informations.
 
 ## Get started
@@ -10,6 +14,7 @@ One day an idea came to my mind to create a game that simulate rocket developmen
 To start serving this API, you should first install [GO](https://go.dev/dl/), then change directory to `/API`. Then run: `go get github.com/mattn/go-sqlite3` after it finishes installing. run the command `go run main.go`. If everything is alright it should show `Server is running on port 8080` after asking you for permition. Make a get request to `http://localhost:8080/welcome` to get started.
 
 ## Walkthrough
+
 > The data scrapping and the database updating is made using [python](https://www.python.org/)
 * The file `scrapper.py` returns a function called `scrapper()`, this is the function that scrappes the net (Wikipedia in this example) for data about the orbitale rocket engines.
 * `database_updater.py` is the python program that updates the database.
@@ -23,16 +28,23 @@ To start serving this API, you should first install [GO](https://go.dev/dl/), th
         * The `id` parameter, should be given the number used to identify the engine in the database.
         * The `engine` parameter, should be given the name of the of the rocket engine.
 ## Usage
+
 First you will have to install [GO](https://go.dev/):
+
 ### Windows
+
 1. You can download installer GO using the link [here](https://go.dev/dl/).
 2. Open the MSI file you downloaded and follow the prompts to install Go.
 By default, the installer will install Go to Program Files or Program Files (x86). You can change the location as needed. After installing, you will need to close and reopen any open command prompts so that changes to the environment made by the installer are reflected at the command prompt.
+
 ### MacOS
+
 1. You can download installer GO using the link [here](https://go.dev/dl/).
 2. Open the package file you downloaded and follow the prompts to install Go.
 The package installs the Go distribution to /usr/local/go. The package should put the /usr/local/go/bin directory in your PATH environment variable. You may need to restart any open Terminal sessions for the change to take effect.
+
 ### Linux
+
 1. **Remove any previous Go installation** by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go:
 `$ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz`
 
