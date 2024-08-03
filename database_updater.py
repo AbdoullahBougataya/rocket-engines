@@ -30,7 +30,7 @@ print("Table is Ready")
 
 for i in range(len(engines)):
     cur = con.cursor()
-    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i]};".replace("''", "NULL"))
+    cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + images[i]};".replace("''", "NULL"))
     con.commit()
 
 print("Table successfully filled")
