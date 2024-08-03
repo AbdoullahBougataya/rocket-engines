@@ -73,6 +73,7 @@ type Engine struct {
     Mass                NullValue `json:"mass_(kg)"`
     Thrust_weight_ratio NullValue `json:"thrust:weight_ratio"`
     Oxidiser_fuel_ratio NullValue `json:"oxidiser:fuel_ratio"`
+    Image               NullValue `json:"image"`
 }
 
 func welcome_handler(w http.ResponseWriter, r *http.Request) {
