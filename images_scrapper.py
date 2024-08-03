@@ -1,46 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
 import scrapper
-import os, shutil
 import sys
 
-# This function download images from a given URL to a file directory
-def download_image(image_url, file_dir):
-    response = requests.get(image_url, headers = {'User-Agent': 'NicoBot/0.1 (your@email.address)'})
-
-    if response.status_code == 200:
-        directory = os.path.dirname(file_dir)
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-
-        with open(file_dir, "wb") as fp:
-            fp.write(response.content)
-
-# Clear the images file
-for filename in os.listdir("./images"):
-    file_path = os.path.join("./images", filename)
-    try:
-        if os.path.isfile(file_path) or os.path.islink(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
-    except Exception as e:
-        print('Failed to delete %s. Reason: %s' % (file_path, e))
-
-# This function scrappes images of rocket engines
+# This function get the links of images of rocket engines
 def images_scrapper():
     engines = scrapper()[1]
     print("Downloading images...")
     paths = ()
     c = 0
     for engine in engines:
-        path = ""
+        pic_url = ""
         engine_name = engine[0]
         goog_search = "https://www.google.com/search?sclient=psy-ab&client=ubuntu&hs=k5b&channel=fs&biw=1366&bih=648&noj=1&q=" + engine_name.replace(" ", "+") + "+rocket+engine+wikipedia"
-
-
         r = requests.get(goog_search)
-
         soup = BeautifulSoup(r.text, "html.parser")
         search_result = soup.find_all("a")
         for i in range(len(search_result)):
@@ -56,11 +29,9 @@ def images_scrapper():
                     if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
                         if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2 and "Aeon" not in engine_name:
                             pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
-                            path = f"/images/{engine_name}.jpg"
-                            download_image(pic_url, path)
         c += 1
         print(f"{int(100 * (c/len(engines)))}% done")
-        paths += (path, )
+        paths += (pic_url, )
     print(f"100% done")
     return paths
 
