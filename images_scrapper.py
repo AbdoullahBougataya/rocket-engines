@@ -25,14 +25,5 @@ for engine in engines:
             if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}):
                 if soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset"):
                     if len(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()) > 2:
-                        print("https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2]))
                         pic_url = "https:" + str(soup.find("table", {"class" : "infobox"}).find("td", {"class": "infobox-image"}).find("img").get("srcset").split()[2])
-                        with open(f'images/{engine_name}.jpg', 'wb') as handler:
-                            response = requests.get(pic_url, stream=True)
-                            while response.status_code != 200:
-                                response = requests.get(pic_url, stream=True)
-                            for block in response.iter_content(512):
-                                if not block:
-                                    break
-                                handler.write(block)
-                        time.sleep(2)
+                        print(pic_url)
