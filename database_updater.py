@@ -23,15 +23,16 @@ for i in range(len(titles)):
     elif type(engines[17][i]) == float:
         table += """ REAL, """
 table = table.removesuffix(""", """)
-table += """Image TEXT); """
+table += """, Image TEXT); """
 cur.execute(table)
 
 print("Table is Ready")
-
+print("Filling the database...")
 for i in range(len(engines)):
     cur = con.cursor()
     cur.execute(f"INSERT INTO rocket_engines VALUES {(i, ) + engines[i] + tuple(images[i])};".replace("''", "NULL"))
     con.commit()
+    print(f"{int(100 * (i/len(engines)))}% done")
 
 print("Table successfully filled")
 # Close the connection

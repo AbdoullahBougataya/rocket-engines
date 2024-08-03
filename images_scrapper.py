@@ -59,7 +59,7 @@ def images_scrapper():
                             path = f"./images/{engine_name}.jpg"
                             download_image(pic_url, path)
         c += 1
-        print(f"{100 * (c/len(engines))} % done")
+        print(f"{int(100 * (c/len(engines)))}% done")
         paths += tuple(path)
     return paths
 
