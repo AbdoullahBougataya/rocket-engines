@@ -60,7 +60,8 @@ def scrapper():
                 # Change Thrusts intervals to medians
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
-                ###
+                elif i == 21:
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[0:7]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[7:13])]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
@@ -78,6 +79,7 @@ def scrapper():
                 if titles[j] == 'Specific impulse Vac (s)' or titles[j] == 'Specific impulse SL (s)':
                     row += tuple(map(str, [""]))
         print(f"{int((i/len(rows_bs)) * 50)}% done")
+        print(row)
         # append the data with the newly made row if it is not empty
         if row != ():
             data.append(row)
