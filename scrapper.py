@@ -5,6 +5,9 @@ import sys
 
 # scrapper() is a function that scrape the elements of the list that contains the informations about rocket engines. This function return two tuples; the header of the table and the content of the tables.
 def scrapper():
+    le7a = 20
+    nk33a = 27
+    helix = 17
     print("Scrapping engines data...")
     # get the html from scrapper
     link = 'https://en.wikipedia.org/wiki/Comparison_of_orbital_rocket_engines'
@@ -56,12 +59,12 @@ def scrapper():
                 row += tuple(map(float, [float(string_element.split(" ")[0])]))
                 row += tuple(map(str, ['']))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j] == 'Specific impulse SL (s)' and (len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1): # or i == 21
+            elif titles[j] == 'Specific impulse SL (s)' and (len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1 or i == 20):
                 # Change Thrusts intervals to medians
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
-                # elif i == 21:
-                #     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[0:7]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[7:13])]))
+                elif i == 20:
+                    row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[0:7]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ")[7:13])]))
                 else:
                     row += tuple(map(float, [float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0]), float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1])]))
             # Change numbers from strings to floats
