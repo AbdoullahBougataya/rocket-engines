@@ -56,7 +56,7 @@ def scrapper():
                 row += tuple(map(float, [float(string_element.split(" ")[0])]))
                 row += tuple(map(str, ['']))
             # Split the thrust column into Thrust in the vaccum and Thrust in the sea level
-            elif titles[j] == 'Specific impulse SL (s)' and (len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1 or i == 21):
+            elif titles[j] == 'Specific impulse SL (s)' and (len(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()) > 1 or i == 23):
                 # Change Thrusts intervals to medians
                 if string_element.find('–') != -1:
                     row += tuple(map(float, [(float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[0].split('–')[1])) / 2, (float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[0]) + float(re.sub("\(.*?\)","()", string_element).replace("()", "").replace("  ", " ").split()[1].split('–')[1])) / 2]))
