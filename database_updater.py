@@ -18,9 +18,9 @@ images = images_links()
 table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL PRIMARY KEY, """
 for i in range(len(titles)):
     table += f"""'{titles[i]}'"""
-    if type(engines[17][i]) == str:
+    if type(engines[19][i]) == str:
         table += """ TEXT, """
-    elif type(engines[17][i]) == float:
+    elif type(engines[19][i]) == float:
         table += """ REAL, """
 table = table.removesuffix(""", """)
 table += """, Image TEXT); """

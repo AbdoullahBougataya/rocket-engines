@@ -155,5 +155,4 @@ def scrapper():
     # The function returns the titles and the data
     print(f"100% done")
     return titles, data
-print(scrapper())
 sys.modules[__name__] = scrapper
