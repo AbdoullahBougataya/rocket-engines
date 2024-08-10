@@ -12,7 +12,7 @@ cur.execute("DROP TABLE IF EXISTS rocket_engines")
 
 titles, engines = scrapper()
 
-images = images_links()
+images, wikipedia_pages = images_links()
 
 # Creating table
 table = """ CREATE TABLE rocket_engines (Id INTEGER NOT NULL PRIMARY KEY, """
