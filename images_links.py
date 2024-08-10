@@ -23,6 +23,7 @@ def images_links():
                 break
         if the_link:
             wikipedia_link = str(the_link.get('href')).removeprefix("/url?q=").split("&")[0]
+            wikipedia_pages[engine_name] = wikipedia_link
             r = requests.get(wikipedia_link)
             soup = BeautifulSoup(r.text, "html.parser")
             if soup.find("table", {"class" : "infobox"}):
