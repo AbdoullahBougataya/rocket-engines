@@ -8,6 +8,7 @@ def images_links():
     engines = scrapper()[1]
     print("Getting images links...")
     paths = ()
+    wikipedia_pages = {}
     c = 0
     for engine in engines:
         pic_url = ""
