@@ -35,6 +35,6 @@ def images_links():
         print(f"{int(100 * (c/len(engines)))}% done")
         paths += (pic_url, )
     print(f"100% done")
-    return paths
+    return paths, wikipedia_pages
 
 sys.modules[__name__] = images_links
